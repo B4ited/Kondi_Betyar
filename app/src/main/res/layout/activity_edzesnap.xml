@@ -53,7 +53,7 @@
 
 
         <ImageButton
-            android:id="@+id/ib_edit"
+            android:id="@+id/ib_add"
             android:layout_width="116dp"
             android:layout_height="97dp"
             android:scaleType="centerCrop"
