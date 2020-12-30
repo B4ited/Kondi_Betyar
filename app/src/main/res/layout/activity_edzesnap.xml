@@ -25,7 +25,6 @@
             android:id="@+id/t_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hétfői mell"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp" />
@@ -40,7 +39,6 @@
             android:id="@+id/leiras"
             android:layout_width="match_parent"
             android:layout_height="229dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp" />
@@ -53,7 +51,7 @@
 
 
         <ImageButton
-            android:id="@+id/ib_add"
+            android:id="@+id/ib_edit"
             android:layout_width="116dp"
             android:layout_height="97dp"
             android:scaleType="centerCrop"

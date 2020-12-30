@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +9,7 @@
         android:id="@+id/l_tema"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
@@ -27,27 +27,22 @@
             android:id="@+id/t_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Edzés Tervek"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="30sp"
-            android:text="Edzés Tervek" />
-
-        <Button
-            android:id="@+id/b_hallado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Halladó edzes terv" />
-
-
+            android:textSize="30sp" />
 
         <ImageButton
             android:id="@+id/ib_add"
-            android:layout_width="78dp"
-            android:layout_height="86dp"
-            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:backgroundTint="#FFFFFF"
+            android:rotationX="11"
+            android:scaleType="fitCenter"
+            android:textAlignment="center"
+            android:tint="#331C5E"
             app:srcCompat="@android:drawable/ic_menu_add" />
 
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

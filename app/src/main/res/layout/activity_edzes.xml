@@ -30,87 +30,18 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp"
-            android:text="Heti terv" />
-
-
-        <Button
-            android:id="@+id/b_tavolsag"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/b_mell"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Hétfő mell edzés" />
-
-        <Button
-            android:id="@+id/b_tavolsag2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/b_vall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text=" Kedd kar edzés" />
-
-        <Button
-            android:id="@+id/b_tavolsag3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/b_hat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Pihenőnap" />
-
-        <Button
-            android:id="@+id/b_tavolsag4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/b_kar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Csütörtök váll edzés" />
-
-        <Button
-            android:id="@+id/b_tavolsag5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <Button
-            android:id="@+id/b_labb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Péntek lább edzés" />
-
-        <Button
-            android:id="@+id/b_tavolsag7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
+           />
 
 
         <ImageButton
             android:id="@+id/ib_add"
-            android:layout_width="78dp"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:background="#E1DCDC"
+            android:backgroundTint="@color/design_default_color_background"
+            android:scaleType="fitCenter"
+            android:tint="#C11A1A"
+            app:srcCompat="@android:drawable/ic_menu_add" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
