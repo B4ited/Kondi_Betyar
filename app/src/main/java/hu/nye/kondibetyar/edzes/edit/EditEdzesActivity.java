@@ -18,9 +18,6 @@ import hu.nye.kondibetyar.edzes.EdzesNapActivity;
 import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
 
 public class EditEdzesActivity extends AppCompatActivity {
-    public static final String TEXT="hu.nye.kondibetyar.edzes.edit.TEXT";
-    public static final String TEXT2="hu.nye.kondibetyar.edzes.edit.TEXT2";
-    public static final String NUMBER="hu.nye.kondibetyar.edzes.edit.NUMBER";
     private LinearLayout ll;
     private ImageButton add;
     private ImageButton menu;
@@ -41,7 +38,6 @@ public class EditEdzesActivity extends AppCompatActivity {
         nev=this.findViewById(R.id.et_nev);
         title=this.findViewById(R.id.t_title);
         intent=getIntent();
-        terv=intent.getStringExtra(EdzesActivity.TEXT);
         title.setText(terv);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,30 +62,7 @@ public class EditEdzesActivity extends AppCompatActivity {
         }
         if(Activity=="EdzesActivity") {
             intent = new Intent(this, EdzesActivity.class);
-            intent.putExtra(TEXT, title.getText().toString());
-            intent.putExtra(TEXT2, nev.getText().toString());
-            intent.putExtra(NUMBER, db);
             startActivity(intent);
         }
     }
-
-    /*
-    private void createEditText(){
-        et = new EditText(this);
-        et.setId(db);
-        ll.addView(et);
-        db++;
-
-    }
-
-    private void loadEditText(EditText et){
-        cimek=new String[db];
-        for (int i=0; i<db; i++){
-           cimek[i]=et.getText().toString();
-        }
-    }*/
-
-
-
-
 }

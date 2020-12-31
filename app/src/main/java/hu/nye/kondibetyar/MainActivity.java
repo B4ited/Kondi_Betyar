@@ -8,14 +8,18 @@ import android.view.View;
 
 import android.widget.ImageButton;
 
+import hu.nye.kondibetyar.database.DatabaseHelper;
+
 public class MainActivity extends AppCompatActivity {
 
+    public DatabaseHelper myDb;
    private ImageButton menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb=new DatabaseHelper(this);
         menu = this.findViewById(R.id.ib_menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override

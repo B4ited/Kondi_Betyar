@@ -45,7 +45,7 @@ public class EdzesNapActivity extends AppCompatActivity {
         db=intent.getIntExtra(EditNapActivity.NUMBER,0);
         if(db==0)
         {
-            nev=intent.getStringExtra(EdzesActivity.TEXT);
+
             title.setText(nev);
         }
         else {
