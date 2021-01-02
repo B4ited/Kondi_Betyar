@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //edzes_heti
     public static final String TABLE_EDZES_HETI="edzes_heti";
     public static final String COL_EDZES_HETI_ID="id";
+    public static final String COL_EDZES_HETI_TERV_ID="terv_id";
     public static final String COL_EDZES_HETI_NEV="nev";
     public static final String COL_EDZES_HETI_DATUM="datum";
 
@@ -27,6 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //edzes_nap
     public static final String TABLE_EDZES_NAP="edzes_nap";
     public static final String COL_EDZES_NAP_ID="id";
+    public static final String COL_EDZES_NAP_HETI_ID="heti_id";
     public static final String COL_EDZES_NAP_NEV="nev";
     public static final String COL_EDZES_NAP_LEIRAS="leiras";
     public static final String COL_EDZES_NAP_DATUM="datum";
@@ -48,15 +50,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String query2 = "CREATE TABLE " + TABLE_EDZES_HETI +
                 " (" + COL_EDZES_HETI_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_EDZES_HETI_TERV_ID + " INTEGER, "+
                 COL_EDZES_HETI_NEV + " TEXT, " +
-                COL_EDZES_HETI_DATUM + " DATE);";
+                COL_EDZES_HETI_DATUM + " DATE,"+
+                "FOREIGN KEY ("+COL_EDZES_HETI_TERV_ID+")"+
+                "REFERENCES "+TABLE_EDZES_TERV+"("+COL_EDZES_TERV_ID+"));";
 
 
         String query3="CREATE TABLE " + TABLE_EDZES_NAP +
                 " (" + COL_EDZES_NAP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_EDZES_NAP_HETI_ID + " INTEGER, "+
                 COL_EDZES_NAP_NEV + " TEXT, " +
                 COL_EDZES_NAP_LEIRAS +" TEXT," +
-                COL_EDZES_NAP_DATUM + " DATE);";
+                COL_EDZES_NAP_DATUM + " DATE,"+
+                "FOREIGN KEY ("+COL_EDZES_NAP_HETI_ID+")"+
+                "REFERENCES "+TABLE_EDZES_HETI+"("+COL_EDZES_HETI_ID+"));";
 
         //étrend
         //gyakorlatok
@@ -75,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String TABLE,String terv_nev, String terv_datum,String heti_nev, String heti_datum, String nap_nev, String nap_leiras, String nap_datum) {
+    public boolean insertData(String TABLE,String terv_nev, String terv_datum,String terv_id, String heti_nev, String heti_datum,String heti_id, String nap_nev, String nap_leiras, String nap_datum) {
         long result = 0;
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -86,12 +94,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         if(TABLE=="edzes_heti") {
-            contentValues.put(COL_EDZES_HETI_NEV, terv_nev);
-            contentValues.put(COL_EDZES_HETI_DATUM, terv_datum);
+            contentValues.put(COL_EDZES_HETI_TERV_ID, terv_id);
+            contentValues.put(COL_EDZES_HETI_NEV, heti_nev);
+            contentValues.put(COL_EDZES_HETI_DATUM, heti_datum);
             result= db.insert(TABLE_EDZES_HETI,null,contentValues);
         }
 
         if(TABLE=="edzes_nap") {
+            contentValues.put(COL_EDZES_NAP_HETI_ID,heti_id);
             contentValues.put(COL_EDZES_NAP_NEV, nap_nev);
             contentValues.put(COL_EDZES_NAP_LEIRAS, nap_leiras);
             contentValues.put(COL_EDZES_NAP_DATUM, nap_datum);
@@ -103,14 +113,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
-    public Cursor getMenuData(String Table) {
+    public Cursor getMenuData(String Table,String Button_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = null;
-
         //edzés
-        if(Table=="edzes_terv") res = db.rawQuery("SELECT "+COL_EDZES_TERV_ID +", "+ COL_EDZES_TERV_NEV + " FROM " + TABLE_EDZES_TERV, null);
-        if(Table=="edzes_heti") res = db.rawQuery("SELECT "+COL_EDZES_HETI_ID +", "+ COL_EDZES_HETI_NEV + " FROM " + TABLE_EDZES_HETI, null);
-        if(Table=="edzes_nap") res = db.rawQuery("SELECT "+COL_EDZES_NAP_ID+", "+ COL_EDZES_NAP_NEV + " FROM " + TABLE_EDZES_NAP, null);
+        if(Table=="edzes_terv") res = db.rawQuery("SELECT "+COL_EDZES_TERV_ID +", "+ COL_EDZES_TERV_NEV + " FROM " + TABLE_EDZES_TERV , null);
+        if(Table=="edzes_heti") res = db.rawQuery("SELECT "+COL_EDZES_HETI_ID +", "+ COL_EDZES_HETI_NEV + " FROM " + TABLE_EDZES_HETI + " WHERE "+COL_EDZES_HETI_TERV_ID+"="+Button_id, null);
+        if(Table=="edzes_nap") res = db.rawQuery("SELECT "+COL_EDZES_NAP_ID+", "+ COL_EDZES_NAP_NEV + " FROM " + TABLE_EDZES_NAP +" WHERE "+COL_EDZES_NAP_HETI_ID+"="+Button_id, null);
         //étrend
         //gyakorlatok
         return res;

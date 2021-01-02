@@ -1,6 +1,7 @@
 package hu.nye.kondibetyar.edzes;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
+import hu.nye.kondibetyar.database.DatabaseHelper;
 import hu.nye.kondibetyar.edzes.edit.EditEdzesActivity;
 import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
 import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
@@ -25,10 +27,12 @@ public class EdzesNapActivity extends AppCompatActivity {
     private Intent intent;
     private TextView title;
     private TextView leiras;
+    private DatabaseHelper myDb;
+    private Cursor res;
     private ImageButton menu;
     private String nev;
     private String text;
-    public int db;
+    public String title_id;
 
 
 
@@ -42,18 +46,15 @@ public class EdzesNapActivity extends AppCompatActivity {
         leiras=this.findViewById(R.id.leiras);
         edit=this.findViewById(R.id.ib_edit);
         intent=getIntent();
-        db=intent.getIntExtra(EditNapActivity.NUMBER,0);
-        if(db==0)
-        {
+        title_id=String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER, 1));
+        title.setText(loadTitle(title_id));
 
-            title.setText(nev);
-        }
-        else {
+        /*
             nev=intent.getStringExtra(EditNapActivity.TEXT);
             text=intent.getStringExtra(EditNapActivity.TEXT2);
             title.setText(nev);
             leiras.setText(text);
-        }
+        */
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,13 @@ public class EdzesNapActivity extends AppCompatActivity {
                 OpenActivity("EditNapActivity");
             }
         });
+    }
+
+    public String loadTitle(String id){
+        myDb=new DatabaseHelper(EdzesNapActivity.this);
+        res=myDb.getTitleId("edzes_heti",id);
+        res.moveToNext();
+        return res.getString(0);
     }
 
     public void OpenActivity(String Activity) {

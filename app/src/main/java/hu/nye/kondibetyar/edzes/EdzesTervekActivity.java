@@ -51,7 +51,7 @@ public class EdzesTervekActivity extends AppCompatActivity {
 
     public void loadButtonData(){
         myDb=new DatabaseHelper(EdzesTervekActivity.this);
-        res=myDb.getMenuData("edzes_terv");
+        res=myDb.getMenuData("edzes_terv",null);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még edzés terved!",Toast.LENGTH_LONG);
         int id;
         String nev;

@@ -41,13 +41,11 @@ public class EditTervekActivity  extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                OpenActivity("EdzesTervekActivity",add.getText().toString());
                 DatabaseHelper myDb=new DatabaseHelper(EditTervekActivity.this);
-                if(myDb.insertData("edzes_terv",add.getText().toString(),null,null,null,null,null,null))
+                if(myDb.insertData("edzes_terv",add.getText().toString(),null,null,null,null,null,null,null,null))
                     System.out.println("Sikerült!");
                 else System.out.println("Nem sikerült!");
-
+                OpenActivity("EdzesTervekActivity",add.getText().toString());
             }
         });
 

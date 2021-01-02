@@ -19,6 +19,8 @@ import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
 import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 
 public class EdzesActivity extends AppCompatActivity {
+    public static final String TEXT="hu.nye.kondibetyar.edzes.TEXT";
+    public static final String TEXT2="hu.nye.kondibetyar.edzes.TEXT2";
     public static final String NUMBER="hu.nye.kondibetyar.edzes.NUMBER";
     private LinearLayout ll;
     private ImageButton edit;
@@ -29,6 +31,7 @@ public class EdzesActivity extends AppCompatActivity {
     private DatabaseHelper myDb;
     private Cursor res;
     private int Button_id;
+    public boolean add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,15 @@ public class EdzesActivity extends AppCompatActivity {
         edit=this.findViewById(R.id.ib_add);
         title=this.findViewById(R.id.t_title);
         intent=getIntent();
-        title_id= String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER,1));
-       title.setText(loadTitle(title_id)+" heti terv");
+        add=intent.getBooleanExtra(EditEdzesActivity.BOOLEAN,false);
+        if(!add) {
+            title_id = String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER, 1));
+            title.setText(loadTitle(title_id) + " heti terv");
+        }else
+        {
+            title_id =intent.getStringExtra(EditEdzesActivity.TEXT);
+            title.setText(loadTitle(title_id) + " heti terv");
+        }
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +62,7 @@ public class EdzesActivity extends AppCompatActivity {
                 public void onClick(View v) { OpenActivity("EditEdzesActivity");
                 }
             });
-       // loadButtonData();
+        loadButtonData();
         }
 
 
@@ -66,7 +76,7 @@ public class EdzesActivity extends AppCompatActivity {
 
     public void loadButtonData(){
         myDb=new DatabaseHelper(EdzesActivity.this);
-        res=myDb.getMenuData("edzes_heti");
+        res=myDb.getMenuData("edzes_heti",title_id);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még heti terved!",Toast.LENGTH_LONG);
         int id;
         String nev;
@@ -95,12 +105,12 @@ public class EdzesActivity extends AppCompatActivity {
         if (Activity == "EdzesNapActivity") {
             intent = new Intent(this, EdzesNapActivity.class);
             intent.putExtra(NUMBER,Button_id);
-            System.out.println(Button_id);
             startActivity(intent);
         }
         if(Activity == "EditEdzesActivity"){
             intent = new Intent(this, EditEdzesActivity.class);
-            intent.putExtra(NUMBER,Button_id);
+            intent.putExtra(TEXT,title.getText().toString());
+            intent.putExtra(TEXT2,title_id);
             startActivity(intent);
         }
         if(Activity=="MenuActivity"){
