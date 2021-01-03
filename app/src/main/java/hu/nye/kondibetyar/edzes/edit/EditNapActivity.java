@@ -13,12 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
+import hu.nye.kondibetyar.database.DatabaseHelper;
 import hu.nye.kondibetyar.edzes.EdzesNapActivity;
 
 public class EditNapActivity extends AppCompatActivity {
     public static final String TEXT="hu.nye.kondibetyar.edzes.edit.TEXT";
     public static final String TEXT2="hu.nye.kondibetyar.edzes.edit.TEXT2";
-    public static final String NUMBER="hu.nye.kondibetyar.edzes.edit.NUMBER";
+    public static final String BOOLEAN="hu.nye.kondibetyar.edzes.edit.BOOLEAN";
     private LinearLayout ll;
     private ImageButton menu;
     private Intent intent;
@@ -27,22 +28,21 @@ public class EditNapActivity extends AppCompatActivity {
     private Button send;
     private String nev;
     private String text;
-    public int db;
+    private String id;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edzes_edit_nap);
-        db=1;
         ll=this.findViewById(R.id.l_tema);
         menu = this.findViewById(R.id.ib_menu);
         title=this.findViewById(R.id.t_title);
         leiras=this.findViewById(R.id.et_textarea);
         send=this.findViewById(R.id.b_send);
 
-
         intent=getIntent();
+        id=intent.getStringExtra(EdzesNapActivity.ID);
         nev=intent.getStringExtra(EdzesNapActivity.TEXT);
         text=intent.getStringExtra(EdzesNapActivity.TEXT2);
 
@@ -65,9 +65,18 @@ public class EditNapActivity extends AppCompatActivity {
     public void OpenActivity(String Activity) {
         if(Activity == "EdzesNapActivity"){
             intent = new Intent(this, EdzesNapActivity.class);
-            intent.putExtra(TEXT,title.getText().toString());
+            DatabaseHelper myDb=new DatabaseHelper(EditNapActivity.this);
+            if(text.isEmpty()) {
+                if (myDb.insertData("edzes_nap", null, null, null, null, null, id, nev, leiras.getText().toString(), null))
+                    System.out.println("CREATED");
+                }
+                else {
+                    if (myDb.updateData("edzes_nap", id, leiras.getText().toString()))
+                        System.out.println("UPDATED");
+                }
+            intent.putExtra(BOOLEAN,true);
+            intent.putExtra(TEXT,id);
             intent.putExtra(TEXT2,leiras.getText().toString());
-            intent.putExtra(NUMBER,db);
             startActivity(intent);
         }
         if(Activity=="MenuActivity"){

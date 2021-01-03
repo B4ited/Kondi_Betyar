@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
 import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 
 public class EdzesNapActivity extends AppCompatActivity {
+    public static final String ID="hu.nye.kondibetyar.edzes.ID";
     public static final String TEXT="hu.nye.kondibetyar.edzes.TEXT";
     public static final String TEXT2="hu.nye.kondibetyar.edzes.TEXT2";
     private ImageButton edit;
@@ -30,9 +32,8 @@ public class EdzesNapActivity extends AppCompatActivity {
     private DatabaseHelper myDb;
     private Cursor res;
     private ImageButton menu;
-    private String nev;
-    private String text;
     public String title_id;
+    public boolean add;
 
 
 
@@ -46,15 +47,11 @@ public class EdzesNapActivity extends AppCompatActivity {
         leiras=this.findViewById(R.id.leiras);
         edit=this.findViewById(R.id.ib_edit);
         intent=getIntent();
-        title_id=String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER, 1));
+        add=intent.getBooleanExtra(EditNapActivity.BOOLEAN,false);
+        if(!add) title_id = String.valueOf(intent.getIntExtra(EdzesActivity.NUMBER, 1));
+        else title_id =intent.getStringExtra(EditNapActivity.TEXT);
         title.setText(loadTitle(title_id));
-
-        /*
-            nev=intent.getStringExtra(EditNapActivity.TEXT);
-            text=intent.getStringExtra(EditNapActivity.TEXT2);
-            title.setText(nev);
-            leiras.setText(text);
-        */
+        leiras.setText(loadText(title_id));
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,9 +73,18 @@ public class EdzesNapActivity extends AppCompatActivity {
         return res.getString(0);
     }
 
+    public String loadText(String id){
+        myDb=new DatabaseHelper(EdzesNapActivity.this);
+        res=myDb.getTextId(id);
+        res.moveToNext();
+        if(res.getCount()==0) return null;
+        else return res.getString(0);
+    }
+
     public void OpenActivity(String Activity) {
         if(Activity == "EditNapActivity"){
             intent = new Intent(this, EditNapActivity.class);
+            intent.putExtra(ID,title_id);
             intent.putExtra(TEXT,title.getText().toString());
             intent.putExtra(TEXT2,leiras.getText().toString());
             startActivity(intent);

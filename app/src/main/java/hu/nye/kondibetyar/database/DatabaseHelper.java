@@ -32,9 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_EDZES_NAP_NEV="nev";
     public static final String COL_EDZES_NAP_LEIRAS="leiras";
     public static final String COL_EDZES_NAP_DATUM="datum";
-    //étrend
+
     //gyakorlatok
 
+
+    //étrend
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE, null, 1);
@@ -81,6 +83,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_EDZES_HETI);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_EDZES_NAP);
         onCreate(db);
+    }
+
+    public boolean deleteData(String table, String id){
+        return false;
+    }
+
+    public boolean updateData(String TABLE, String id,String leiras) {
+        long result = 0;
+        SQLiteDatabase db=this.getWritableDatabase();
+        if(TABLE=="edzes_nap") {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(COL_EDZES_NAP_LEIRAS, leiras);
+            result = db.update(TABLE_EDZES_NAP, contentValues, COL_EDZES_NAP_ID + "=?", new String[]{id});
+        }
+        if(result==-1) return false;
+        else return true;
     }
 
     public boolean insertData(String TABLE,String terv_nev, String terv_datum,String terv_id, String heti_nev, String heti_datum,String heti_id, String nap_nev, String nap_leiras, String nap_datum) {
@@ -133,4 +151,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(Table=="edzes_nap") res=db.rawQuery("SELECT "+COL_EDZES_NAP_NEV+" FROM "+TABLE_EDZES_NAP+" WHERE id="+id,null);
         return res;
     }
+
+    public Cursor getTextId(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res=null;
+        res=db.rawQuery("SELECT "+COL_EDZES_NAP_LEIRAS+" FROM "+TABLE_EDZES_NAP+" WHERE id="+id,null);
+        return res;
+    }
+
+
 }

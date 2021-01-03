@@ -43,14 +43,10 @@ public class EdzesActivity extends AppCompatActivity {
         title=this.findViewById(R.id.t_title);
         intent=getIntent();
         add=intent.getBooleanExtra(EditEdzesActivity.BOOLEAN,false);
-        if(!add) {
-            title_id = String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER, 1));
-            title.setText(loadTitle(title_id) + " heti terv");
-        }else
-        {
-            title_id =intent.getStringExtra(EditEdzesActivity.TEXT);
-            title.setText(loadTitle(title_id) + " heti terv");
-        }
+        if(!add) title_id = String.valueOf(intent.getIntExtra(EdzesTervekActivity.NUMBER, 1));
+        else title_id =intent.getStringExtra(EditEdzesActivity.TEXT);
+
+        title.setText(loadTitle(title_id) + " heti terv");
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

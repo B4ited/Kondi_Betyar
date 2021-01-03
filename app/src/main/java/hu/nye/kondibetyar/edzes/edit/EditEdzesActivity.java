@@ -30,14 +30,12 @@ public class EditEdzesActivity extends AppCompatActivity {
     private TextView title;
     public String text;
     private Intent intent;
-    public int db;
     private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edzes_edit_edzes);
-        db=1;
         ll = this.findViewById(R.id.l_layout);
         title=this.findViewById(R.id.t_title);
         menu = this.findViewById(R.id.ib_menu);
