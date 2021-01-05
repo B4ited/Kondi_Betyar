@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/l_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#04081E"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="162dp">
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            tools:text="menu" />
+
+        <TextView
+            android:id="@+id/t_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/et_nev"
+            android:layout_width="474dp"
+            android:layout_height="66dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Edzés"
+            android:inputType="textPersonName"
+            android:textColor="#171717" />
+
+        <ImageButton
+            android:id="@+id/ib_add"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="#04081E"
+            android:scaleType="fitCenter"
+            android:tint="#448AFF"
+            app:srcCompat="@android:drawable/ic_menu_add" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tema_sv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#292727"
+    android:backgroundTint="#292727"
+    android:clipToPadding="false"
+    android:fillViewport="false"
+    android:scrollbarStyle="insideInset"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/tema_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#252527"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_menu"
+            android:layout_width="388dp"
+            android:layout_height="47dp"
+            android:layout_margin="20dp"
+            android:background="#272525"
+            android:backgroundTint="#272525"
+            android:fontFamily="sans-serif"
+            android:text="Menu"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#E8E3E3"
+            android:textSize="36sp"
+            tools:text="Menu" />
+
+        <GridLayout
+            android:id="@+id/tema_gl"
+            android:layout_width="match_parent"
+            android:layout_height="377dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="4">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_sajat_edzes"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#504F4F"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/b_edzes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#575656"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/plan"
+                        tools:srcCompat="@drawable/plan" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_gyakorlat"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#504F4F"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/b_gyakorlat"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#575656"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/weight"
+                        tools:srcCompat="@drawable/weight" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_etrend"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#504F4F"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/b_etrend"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#575656"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/food"
+                        tools:srcCompat="@drawable/food" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_kapcsolat"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#504F4F"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/b_kapcsolat"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="#575656"
+                        android:scaleType="fitCenter"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        tools:srcCompat="@android:drawable/ic_menu_info_details" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:id="@+id/l_tema"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#04081E"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="83dp">
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            tools:text="menu" />
+
+        <TextView
+            android:id="@+id/t_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edzés Tervek"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/et_nev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:hint="Terv neve:"
+            android:inputType="textPersonName"
+            android:textColor="#151515" />
+
+        <Button
+            android:id="@+id/b_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#04081E"
+            android:text="Hozzáadás"
+            android:textColor="#FFFFFF" />
+
+        <ImageButton
+            android:id="@+id/ib_edit"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:backgroundTint="#04081E"
+            android:scaleType="fitCenter"
+            android:tint="#31050505"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
