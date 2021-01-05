@@ -85,8 +85,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean deleteData(String table, String id){
-        return false;
+    public boolean deleteData(String TABLE, String id){
+        long result = 0;
+        SQLiteDatabase db=this.getWritableDatabase();
+        if(TABLE=="edzes_terv") {
+            result = db.delete(TABLE_EDZES_TERV, COL_EDZES_TERV_ID+"=?", new String[]{id});
+        }
+        if(TABLE=="edzes_heti") {
+            result = db.delete(TABLE_EDZES_HETI, COL_EDZES_HETI_TERV_ID+"=?", new String[]{id});
+        }
+        if(TABLE=="edzes_nap") {
+            result = db.delete(TABLE_EDZES_NAP, COL_EDZES_NAP_HETI_ID+"=?", new String[]{id});
+        }
+        if(result==-1) return false;
+        else return true;
     }
 
     public boolean updateData(String TABLE, String id,String leiras) {

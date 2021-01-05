@@ -9,6 +9,7 @@
         android:id="@+id/l_tema"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#04081E"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="269dp"
         tools:layout_editor_absoluteY="387dp">
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
         <Button
@@ -41,6 +43,7 @@
             android:layout_height="229dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
         <Button
@@ -54,6 +57,7 @@
             android:id="@+id/ib_edit"
             android:layout_width="116dp"
             android:layout_height="97dp"
+            android:background="#04081E"
             android:scaleType="centerCrop"
             android:visibility="visible"
             app:srcCompat="@android:drawable/ic_menu_edit" />

@@ -10,6 +10,7 @@
         android:id="@+id/l_tema"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#04081E"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp">
@@ -28,9 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="30sp"
-           />
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
 
 
         <ImageButton
@@ -38,9 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="91dp"
             android:background="#E1DCDC"
-            android:backgroundTint="@color/design_default_color_background"
+            android:backgroundTint="#04081E"
             android:scaleType="fitCenter"
-            android:tint="#C11A1A"
+            android:tint="#448AFF"
             app:srcCompat="@android:drawable/ic_menu_add" />
 
     </LinearLayout>

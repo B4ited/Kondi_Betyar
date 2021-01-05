@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
@@ -13,18 +14,18 @@ import hu.nye.kondibetyar.gyakorlatok.GyakorlatokActivity;
 import hu.nye.kondibetyar.kapcsolat.KapcsolatActivity;
 
 public class MenuActivity extends AppCompatActivity {
-    private Button edzes;
-    private Button gyakorlat;
-    private Button etkezes;
-    private Button kapcsolat;
+    private ImageButton edzes;
+    private ImageButton gyakorlat;
+    private ImageButton etkezes;
+    private ImageButton kapcsolat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.menu);
 
         edzes = this.findViewById(R.id.b_edzes);
-        gyakorlat= this.findViewById(R.id.b_gyakorlak);
+        gyakorlat= this.findViewById(R.id.b_gyakorlat);
         etkezes = this.findViewById(R.id.b_etrend);
         kapcsolat = this.findViewById(R.id.b_kapcsolat);
 

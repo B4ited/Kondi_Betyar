@@ -73,7 +73,7 @@ public class EdzesActivity extends AppCompatActivity {
     public void loadButtonData(){
         myDb=new DatabaseHelper(EdzesActivity.this);
         res=myDb.getMenuData("edzes_heti",title_id);
-        if(res.getCount()==0) Toast.makeText(this,"Nincs még heti terved!",Toast.LENGTH_LONG);
+        if(res.getCount()==0) Toast.makeText(this,"Nincs még heti terved!",Toast.LENGTH_LONG).show();
         int id;
         String nev;
         while (res.moveToNext()){

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:id="@+id/l_tema"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#04081E"
         android:orientation="vertical">
 
         <ImageButton
@@ -25,6 +27,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
         <Button
@@ -34,10 +37,12 @@
             android:visibility="invisible" />
 
         <EditText
-        android:id="@+id/et_textarea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Leírás"/>
+            android:id="@+id/et_textarea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:hint="Leírás"
+            android:textColor="#FFFFFF" />
 
 
         <Button
@@ -50,7 +55,8 @@
             android:id="@+id/b_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OK" />
+            android:text="OK"
+            android:textColor="#343563" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
