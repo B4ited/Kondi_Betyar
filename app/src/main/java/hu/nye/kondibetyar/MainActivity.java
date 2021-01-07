@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 OpenActivity();
             }
         });
+
+        //1.5 sec után át dob a főmenübe
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },1500);
+        },1000);
     }
 
 

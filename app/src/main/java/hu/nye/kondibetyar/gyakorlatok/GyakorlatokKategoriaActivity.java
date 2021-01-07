@@ -1,5 +1,6 @@
 package hu.nye.kondibetyar.gyakorlatok;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -17,6 +18,13 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gyakorlatok);
 
         title=this.findViewById(R.id.gyakorlatok_fotitle);
-        title.setText("Mellizom csoport!");
+        Intent intent = getIntent();
+        String kategoria = intent.getStringExtra("kategoria");
+        title.setText(kategoria);
+
+        if(kategoria.equals("Mellizom Gyakorlatok")){
+            title.setText("I'm in");
+        }
+
     }
 }
