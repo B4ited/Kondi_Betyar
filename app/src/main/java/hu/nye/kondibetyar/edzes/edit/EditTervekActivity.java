@@ -20,7 +20,7 @@ import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
 import hu.nye.kondibetyar.database.DatabaseHelper;
 
 public class EditTervekActivity  extends AppCompatActivity {
-    private Button add;
+    private ImageButton add;
     private EditText text;
     private Intent intent;
     private ImageButton menu;

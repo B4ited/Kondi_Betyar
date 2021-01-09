@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(TABLE=="edzes_nap") {
             ContentValues contentValues = new ContentValues();
             contentValues.put(COL_EDZES_NAP_LEIRAS, leiras);
-            result = db.update(TABLE_EDZES_NAP, contentValues, COL_EDZES_NAP_ID + "=? AND "+COL_EDZES_NAP_TERV_NEV+"=?", new String[]{nap_id,terv_nev});
+           result = db.update(TABLE_EDZES_NAP, contentValues, COL_EDZES_NAP_HET_ID + "=? AND "+COL_EDZES_NAP_TERV_NEV+"=?", new String[]{nap_id,terv_nev});
         }
         if(result==-1) return false;
         else return true;

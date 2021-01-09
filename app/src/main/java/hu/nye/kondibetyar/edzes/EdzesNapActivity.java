@@ -56,6 +56,7 @@ public class EdzesNapActivity extends AppCompatActivity {
             button_id = intent.getStringExtra(EditNapActivity.BUTTON_ID);
             terv_nev=intent.getStringExtra(EditNapActivity.TERV_NEV);
         }
+        getSupportActionBar().setTitle(terv_nev);
         title.setText(loadDay(button_id));
         leiras.setText(loadText(button_id,terv_nev));
         menu.setOnClickListener(new View.OnClickListener() {

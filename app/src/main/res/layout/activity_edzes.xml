@@ -35,15 +35,5 @@
             android:textSize="30sp" />
 
 
-        <ImageButton
-            android:id="@+id/ib_add"
-            android:layout_width="match_parent"
-            android:layout_height="91dp"
-            android:background="#E1DCDC"
-            android:backgroundTint="#04081E"
-            android:scaleType="fitCenter"
-            android:tint="#448AFF"
-            app:srcCompat="@android:drawable/ic_menu_add" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

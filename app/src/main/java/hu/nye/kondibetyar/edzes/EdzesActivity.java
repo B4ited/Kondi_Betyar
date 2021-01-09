@@ -20,9 +20,9 @@ public class EdzesActivity extends AppCompatActivity {
     public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
     public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
     private LinearLayout ll;
-    private ImageButton edit;
     private ImageButton menu;
     public Intent intent;
+    private String terv_nev;
     public String title_id;
     private TextView title;
     private DatabaseHelper myDb;
@@ -35,11 +35,12 @@ public class EdzesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edzes);
         ll = this.findViewById(R.id.l_tema);
         menu = this.findViewById(R.id.ib_menu);
-        edit=this.findViewById(R.id.ib_add);
         title=this.findViewById(R.id.t_title);
         intent=getIntent();
         title_id = String.valueOf(intent.getIntExtra(EdzesTervekActivity.BUTTON_ID, 1));
-        title.setText(loadTitle(title_id));
+        terv_nev=loadTitle(title_id);
+        getSupportActionBar().setTitle(terv_nev);
+        title.setText("Heti terv");
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +82,7 @@ public class EdzesActivity extends AppCompatActivity {
         if (Activity == "EdzesNapActivity") {
             intent = new Intent(this, EdzesNapActivity.class);
             intent.putExtra(TERV_ID,title_id);
-            intent.putExtra(TERV_NEV,title.getText().toString());
+            intent.putExtra(TERV_NEV,terv_nev);
             intent.putExtra(BUTTON_ID,Button_id);
             startActivity(intent);
         }

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ public class EditNapActivity extends AppCompatActivity {
     private TextView title;
     private EditText leiras;
     private Button send;
+    private Button pihenő;
     private String text;
     private String button_id;
     private  String terv_nev;
@@ -41,11 +43,13 @@ public class EditNapActivity extends AppCompatActivity {
         title=this.findViewById(R.id.t_title);
         leiras=this.findViewById(R.id.et_textarea);
         send=this.findViewById(R.id.b_send);
+        pihenő=this.findViewById(R.id.b_pihenőnap);
 
         intent=getIntent();
         button_id=intent.getStringExtra(EdzesNapActivity.BUTTON_ID);
         text=intent.getStringExtra(EdzesNapActivity.LEIRAS);
         terv_nev=intent.getStringExtra(EdzesNapActivity.TERV_NEV);
+        getSupportActionBar().setTitle(terv_nev);
 
 
         EdzesNapActivity main=new EdzesNapActivity();
@@ -57,12 +61,20 @@ public class EditNapActivity extends AppCompatActivity {
                 OpenActivity("MenuActivity");
             }
         });
+        pihenő.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                leiras.setText("Pihenőnap");
+                OpenActivity("EdzesNapActivity");
+            }
+        });
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenActivity("EdzesNapActivity");
             }
         });
+
     }
 
     public void OpenActivity(String Activity) {
@@ -87,5 +99,9 @@ public class EditNapActivity extends AppCompatActivity {
             intent=new Intent(this, MenuActivity.class);
             startActivity(intent);
         }
+    }
+    public void toastMsg(String msg) {
+        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        toast.show();
     }
 }
