@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,14 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.database.DatabaseHelper;
-import hu.nye.kondibetyar.edzes.edit.EditEdzesActivity;
 import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
-import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 
 public class EdzesNapActivity extends AppCompatActivity {
-    public static final String ID="hu.nye.kondibetyar.edzes.ID";
-    public static final String TEXT="hu.nye.kondibetyar.edzes.TEXT";
-    public static final String TEXT2="hu.nye.kondibetyar.edzes.TEXT2";
+    public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
+    public static final String LEIRAS="hu.nye.kondibetyar.edzes.LEIRAS";
+    public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
     private ImageButton edit;
     private LinearLayout ll;
     private Intent intent;
@@ -32,7 +28,8 @@ public class EdzesNapActivity extends AppCompatActivity {
     private DatabaseHelper myDb;
     private Cursor res;
     private ImageButton menu;
-    public String title_id;
+    public String button_id;
+    public String terv_nev;
     public boolean add;
 
 
@@ -47,11 +44,20 @@ public class EdzesNapActivity extends AppCompatActivity {
         leiras=this.findViewById(R.id.leiras);
         edit=this.findViewById(R.id.ib_edit);
         intent=getIntent();
+
         add=intent.getBooleanExtra(EditNapActivity.BOOLEAN,false);
-        if(!add) title_id = String.valueOf(intent.getIntExtra(EdzesActivity.NUMBER, 1));
-        else title_id =intent.getStringExtra(EditNapActivity.TEXT);
-        title.setText(loadTitle(title_id));
-        leiras.setText(loadText(title_id));
+        if(!add)
+        {
+            button_id = String.valueOf(intent.getIntExtra(EdzesActivity.BUTTON_ID, 1));
+            terv_nev=intent.getStringExtra(EdzesActivity.TERV_NEV);
+
+        }
+        else {
+            button_id = intent.getStringExtra(EditNapActivity.BUTTON_ID);
+            terv_nev=intent.getStringExtra(EditNapActivity.TERV_NEV);
+        }
+        title.setText(loadDay(button_id));
+        leiras.setText(loadText(button_id,terv_nev));
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,33 +72,63 @@ public class EdzesNapActivity extends AppCompatActivity {
         });
     }
 
-    public String loadTitle(String id){
-        myDb=new DatabaseHelper(EdzesNapActivity.this);
-        res=myDb.getTitleId("edzes_heti",id);
-        res.moveToNext();
-        return res.getString(0);
+
+    public  String loadDay(String id){
+        String day="";
+        switch (id){
+            case "1":
+                day="Hétfő";
+                break;
+            case "2":
+                day="Kedd";
+                break;
+            case "3":
+                day="Szerda";
+                break;
+            case "4":
+                day="Csütörtök";
+                break;
+            case "5":
+                day="Péntek";
+                break;
+            case "6":
+                day="Szombat";
+                break;
+            case "7":
+                day="Vasárnap";
+                break;
+        }
+        return day;
     }
 
-    public String loadText(String id){
+    public String loadText(String id,String terv_nev){
         myDb=new DatabaseHelper(EdzesNapActivity.this);
-        res=myDb.getTextId(id);
+        res=myDb.getTextId(id,terv_nev);
         res.moveToNext();
-        if(res.getCount()==0) return null;
+        if(res.getCount()==0){
+            toastMsg("Nincs még terved!");
+            return null;
+        }
         else return res.getString(0);
     }
 
     public void OpenActivity(String Activity) {
         if(Activity == "EditNapActivity"){
             intent = new Intent(this, EditNapActivity.class);
-            intent.putExtra(ID,title_id);
-            intent.putExtra(TEXT,title.getText().toString());
-            intent.putExtra(TEXT2,leiras.getText().toString());
+            intent.putExtra(BUTTON_ID,button_id);
+            intent.putExtra(LEIRAS,leiras.getText().toString());
+            intent.putExtra(TERV_NEV,terv_nev);
             startActivity(intent);
         }
         if(Activity=="MenuActivity"){
             intent=new Intent(this, MenuActivity.class);
             startActivity(intent);
         }
+    }
+
+    public void toastMsg(String msg) {
+        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        toast.show();
     }
 
 }

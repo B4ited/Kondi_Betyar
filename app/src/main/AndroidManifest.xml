@@ -20,12 +20,11 @@
         <activity android:label="@string/app_name" android:name=".edzes.EdzesActivity"/>
         <activity android:label="@string/app_name" android:name=".edzes.EdzesNapActivity"/>
 
-        <activity android:label="@string/app_name" android:name=".edzes.edit.EditEdzesActivity"/>
         <activity android:label="@string/app_name" android:name=".edzes.edit.EditNapActivity"/>
         <activity android:label="@string/app_name" android:name=".edzes.edit.EditTervekActivity"/>
 
         <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokActivity"/>
-
+        <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokKategoriaActivity"/>
         <activity android:label="@string/app_name" android:name=".etrend.EtrendActivity"/>
 
         <activity android:label="@string/app_name" android:name=".kapcsolat.KapcsolatActivity"/>

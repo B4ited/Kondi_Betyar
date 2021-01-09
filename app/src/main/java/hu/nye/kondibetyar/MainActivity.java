@@ -8,12 +8,17 @@ import android.view.View;
 
 import android.widget.ImageButton;
 
+import java.sql.Time;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import hu.nye.kondibetyar.database.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     public DatabaseHelper myDb;
-   private ImageButton menu;
+    private ImageButton menu;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +32,15 @@ public class MainActivity extends AppCompatActivity {
                 OpenActivity();
             }
         });
-
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        },1500);
     }
 
 

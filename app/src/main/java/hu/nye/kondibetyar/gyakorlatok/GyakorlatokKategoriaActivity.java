@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hu.nye.kondibetyar.R;
 
-public class GyakorlatokActivity extends AppCompatActivity {
+public class GyakorlatokKategoriaActivity extends AppCompatActivity {
 
     private TextView title;
 
@@ -17,6 +17,6 @@ public class GyakorlatokActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gyakorlatok);
 
         title=this.findViewById(R.id.gyakorlatok_fotitle);
-        title.setText("Válassz izomcsoportot!");
+        title.setText("Mellizom csoport!");
     }
 }

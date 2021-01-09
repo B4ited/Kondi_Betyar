@@ -41,7 +41,7 @@ public class EditTervekActivity  extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenActivity("MenuActivity","mind1");
+                OpenActivity("MenuActivity");
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
@@ -57,10 +57,15 @@ public class EditTervekActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHelper myDb=new DatabaseHelper(EditTervekActivity.this);
-                if(myDb.insertData("edzes_terv",text.getText().toString(),null,null,null,null,null,null,null,null))
-                    System.out.println("Sikerült!");
-                else System.out.println("Nem sikerült!");
-                OpenActivity("EdzesTervekActivity",text.getText().toString());
+
+                if(text.getText().toString().matches("")) toastMsg("Üres mező!");
+                else {
+                    if (myDb.insertData("edzes_terv", text.getText().toString(),null, null, null))
+
+                        System.out.println("Sikerült!");
+                    else System.out.println("Nem sikerült!");
+                    OpenActivity("EdzesTervekActivity");
+                }
             }
         });
 
@@ -104,10 +109,12 @@ public class EditTervekActivity  extends AppCompatActivity {
 
     }
 
-    private void OpenActivity(String Activity,String nev) {
-        if (Activity == "EdzesTervekActivity" && !nev.isEmpty()) {
-            intent = new Intent(this, EdzesTervekActivity.class);
-            startActivity(intent);
+    private void OpenActivity(String Activity) {
+
+
+        if (Activity == "EdzesTervekActivity") {
+                intent = new Intent(this, EdzesTervekActivity.class);
+                startActivity(intent);
         }
         if(Activity=="MenuActivity"){
             intent=new Intent(this, MenuActivity.class);

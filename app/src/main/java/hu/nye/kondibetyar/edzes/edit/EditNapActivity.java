@@ -17,18 +17,19 @@ import hu.nye.kondibetyar.database.DatabaseHelper;
 import hu.nye.kondibetyar.edzes.EdzesNapActivity;
 
 public class EditNapActivity extends AppCompatActivity {
-    public static final String TEXT="hu.nye.kondibetyar.edzes.edit.TEXT";
-    public static final String TEXT2="hu.nye.kondibetyar.edzes.edit.TEXT2";
+    public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.edit.BUTTON_ID";
+    public static final String LEIRAS="hu.nye.kondibetyar.edzes.edit.LEIRAS";
     public static final String BOOLEAN="hu.nye.kondibetyar.edzes.edit.BOOLEAN";
+    public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
     private LinearLayout ll;
     private ImageButton menu;
     private Intent intent;
     private TextView title;
     private EditText leiras;
     private Button send;
-    private String nev;
     private String text;
-    private String id;
+    private String button_id;
+    private  String terv_nev;
 
 
     @Override
@@ -42,11 +43,13 @@ public class EditNapActivity extends AppCompatActivity {
         send=this.findViewById(R.id.b_send);
 
         intent=getIntent();
-        id=intent.getStringExtra(EdzesNapActivity.ID);
-        nev=intent.getStringExtra(EdzesNapActivity.TEXT);
-        text=intent.getStringExtra(EdzesNapActivity.TEXT2);
+        button_id=intent.getStringExtra(EdzesNapActivity.BUTTON_ID);
+        text=intent.getStringExtra(EdzesNapActivity.LEIRAS);
+        terv_nev=intent.getStringExtra(EdzesNapActivity.TERV_NEV);
 
-        title.setText(nev);
+
+        EdzesNapActivity main=new EdzesNapActivity();
+        title.setText(main.loadDay(button_id));
         leiras.setText(text);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,16 +70,17 @@ public class EditNapActivity extends AppCompatActivity {
             intent = new Intent(this, EdzesNapActivity.class);
             DatabaseHelper myDb=new DatabaseHelper(EditNapActivity.this);
             if(text.isEmpty()) {
-                if (myDb.insertData("edzes_nap", null, null, null, null, null, id, nev, leiras.getText().toString(), null))
+                if (myDb.insertData("edzes_nap",null,button_id,terv_nev, leiras.getText().toString()))
                     System.out.println("CREATED");
                 }
                 else {
-                    if (myDb.updateData("edzes_nap", id, leiras.getText().toString()))
+                    if (myDb.updateData("edzes_nap",button_id,terv_nev,leiras.getText().toString()))
                         System.out.println("UPDATED");
                 }
             intent.putExtra(BOOLEAN,true);
-            intent.putExtra(TEXT,id);
-            intent.putExtra(TEXT2,leiras.getText().toString());
+            intent.putExtra(BUTTON_ID,button_id);
+            intent.putExtra(TERV_NEV,terv_nev);
+            intent.putExtra(LEIRAS,leiras.getText().toString());
             startActivity(intent);
         }
         if(Activity=="MenuActivity"){

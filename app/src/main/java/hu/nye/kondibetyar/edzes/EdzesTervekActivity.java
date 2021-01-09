@@ -19,7 +19,7 @@ import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 
 
 public class EdzesTervekActivity extends AppCompatActivity {
-    public static final String NUMBER="hu.nye.kondibetyar.edzes.NUMBER";
+    public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
     private ImageButton edit;
     private LinearLayout ll;
     private ImageButton menu;
@@ -82,7 +82,7 @@ public class EdzesTervekActivity extends AppCompatActivity {
     public void OpenActivity(String Activity) {
         if (Activity == "EdzesActivity") {
             intent = new Intent(this, EdzesActivity.class);
-            intent.putExtra(NUMBER, Button_id);
+            intent.putExtra(BUTTON_ID, Button_id);
             startActivity(intent);
         }
         if(Activity == "EditTervekActivity"){
