@@ -24,6 +24,9 @@ android {
             res {
                 srcDirs 'src/main/res', 'src/main/res/layouts/edzes', 'src/main/res/edzes'
             }
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
         }
     }
 }

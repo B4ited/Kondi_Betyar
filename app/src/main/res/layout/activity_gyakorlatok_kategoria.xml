@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="246dp">
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="40dp">
 
         <ImageButton
             android:id="@+id/gyakorlatok_menuBTN"
@@ -27,5 +27,10 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/gyakorlatok_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
