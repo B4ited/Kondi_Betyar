@@ -18,7 +18,7 @@ import hu.nye.kondibetyar.database.DatabaseHelper;
 import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 
 
-public class EdzesTervekActivity extends AppCompatActivity {
+public class SajatEdzesTervekActivity extends AppCompatActivity {
     public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
     private ImageButton edit;
     private LinearLayout ll;
@@ -46,11 +46,12 @@ public class EdzesTervekActivity extends AppCompatActivity {
                 OpenActivity("EditTervekActivity");
             }
         });
+        getSupportActionBar().setTitle("Edzés");
         loadButtonData();
     }
 
     public void loadButtonData(){
-        myDb=new DatabaseHelper(EdzesTervekActivity.this);
+        myDb=new DatabaseHelper(SajatEdzesTervekActivity.this);
         res=myDb.getMenuData("edzes_terv",null);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még edzés terved!",Toast.LENGTH_LONG).show();
         int id;
@@ -81,7 +82,7 @@ public class EdzesTervekActivity extends AppCompatActivity {
 
     public void OpenActivity(String Activity) {
         if (Activity == "EdzesActivity") {
-            intent = new Intent(this, EdzesActivity.class);
+            intent = new Intent(this, SajatEdzesActivity.class);
             intent.putExtra(BUTTON_ID, Button_id);
             startActivity(intent);
         }

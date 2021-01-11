@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -16,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
-import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
+import hu.nye.kondibetyar.edzes.SajatEdzesTervekActivity;
 import hu.nye.kondibetyar.database.DatabaseHelper;
 
 public class EditTervekActivity  extends AppCompatActivity {
@@ -36,7 +35,7 @@ public class EditTervekActivity  extends AppCompatActivity {
         add = this.findViewById(R.id.b_send);
         text = this.findViewById(R.id.et_nev);
         edit=this.findViewById(R.id.ib_edit);
-
+        getSupportActionBar().setTitle("Edzés");
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +112,7 @@ public class EditTervekActivity  extends AppCompatActivity {
 
 
         if (Activity == "EdzesTervekActivity") {
-                intent = new Intent(this, EdzesTervekActivity.class);
+                intent = new Intent(this, SajatEdzesTervekActivity.class);
                 startActivity(intent);
         }
         if(Activity=="MenuActivity"){

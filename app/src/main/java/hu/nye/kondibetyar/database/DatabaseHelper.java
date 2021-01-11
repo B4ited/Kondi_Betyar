@@ -52,9 +52,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(query);
         db.execSQL(query2);
-
-       insertBasicData(db);
-
     }
 
     @Override
@@ -132,31 +129,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         res=db.rawQuery("SELECT "+COL_EDZES_NAP_LEIRAS+" FROM "+TABLE_EDZES_NAP+" WHERE "+COL_EDZES_NAP_HET_ID+"="+button_id+ " AND "+ COL_EDZES_NAP_TERV_NEV+"="+"'"+terv_nev+"'",null);
         return res;
     }
-
-
-    public void insertBasicData(SQLiteDatabase db){
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_TERV+"("+COL_EDZES_TERV_NEV+") VALUES ('Haladó')");
-       //Haladó
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('1','Haladó','Mell')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('2','Haladó','Hát')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('3','Haladó','Váll')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('4','Haladó','Pihenőnap')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('5','Haladó','Kar')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('6','Haladó','Pihenőnap')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('7','Haladó','Pihenőnap')");
-
-        //Kezdő
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_TERV+"("+COL_EDZES_TERV_NEV+") VALUES ('Kezdő')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('1','Kezdő','Mell')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('2','Kezdő','Hát')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('3','Kezdő','Váll')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('4','Kezdő','Pihenőnap')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('5','Kezdő','Kar')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('6','Kezdő','Pihenőnap')");
-        db.execSQL(" INSERT INTO "+TABLE_EDZES_NAP+"("+COL_EDZES_NAP_HET_ID+","+COL_EDZES_NAP_TERV_NEV+","+COL_EDZES_NAP_LEIRAS+") VALUES ('7','Kezdő','Pihenőnap')");
-
-    }
-
-
 
 }

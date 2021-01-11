@@ -16,7 +16,7 @@ import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.database.DatabaseHelper;
 import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
 
-public class EdzesNapActivity extends AppCompatActivity {
+public class SajatEdzesNapActivity extends AppCompatActivity {
     public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
     public static final String LEIRAS="hu.nye.kondibetyar.edzes.LEIRAS";
     public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
@@ -43,13 +43,13 @@ public class EdzesNapActivity extends AppCompatActivity {
         title=this.findViewById(R.id.t_title);
         leiras=this.findViewById(R.id.leiras);
         edit=this.findViewById(R.id.ib_edit);
+        getSupportActionBar().setTitle("Edzés");
         intent=getIntent();
-
         add=intent.getBooleanExtra(EditNapActivity.BOOLEAN,false);
         if(!add)
         {
-            button_id = String.valueOf(intent.getIntExtra(EdzesActivity.BUTTON_ID, 1));
-            terv_nev=intent.getStringExtra(EdzesActivity.TERV_NEV);
+            button_id = String.valueOf(intent.getIntExtra(SajatEdzesActivity.BUTTON_ID, 1));
+            terv_nev=intent.getStringExtra(SajatEdzesActivity.TERV_NEV);
 
         }
         else {
@@ -103,7 +103,7 @@ public class EdzesNapActivity extends AppCompatActivity {
     }
 
     public String loadText(String id,String terv_nev){
-        myDb=new DatabaseHelper(EdzesNapActivity.this);
+        myDb=new DatabaseHelper(SajatEdzesNapActivity.this);
         res=myDb.getTextId(id,terv_nev);
         res.moveToNext();
         if(res.getCount()==0){

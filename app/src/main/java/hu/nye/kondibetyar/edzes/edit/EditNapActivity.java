@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.database.DatabaseHelper;
-import hu.nye.kondibetyar.edzes.EdzesNapActivity;
+import hu.nye.kondibetyar.edzes.SajatEdzesNapActivity;
 
 public class EditNapActivity extends AppCompatActivity {
     public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.edit.BUTTON_ID";
@@ -44,15 +44,15 @@ public class EditNapActivity extends AppCompatActivity {
         leiras=this.findViewById(R.id.et_textarea);
         send=this.findViewById(R.id.b_send);
         pihenő=this.findViewById(R.id.b_pihenőnap);
-
+        getSupportActionBar().setTitle("Edzés");
         intent=getIntent();
-        button_id=intent.getStringExtra(EdzesNapActivity.BUTTON_ID);
-        text=intent.getStringExtra(EdzesNapActivity.LEIRAS);
-        terv_nev=intent.getStringExtra(EdzesNapActivity.TERV_NEV);
+        button_id=intent.getStringExtra(SajatEdzesNapActivity.BUTTON_ID);
+        text=intent.getStringExtra(SajatEdzesNapActivity.LEIRAS);
+        terv_nev=intent.getStringExtra(SajatEdzesNapActivity.TERV_NEV);
         getSupportActionBar().setTitle(terv_nev);
 
 
-        EdzesNapActivity main=new EdzesNapActivity();
+        SajatEdzesNapActivity main=new SajatEdzesNapActivity();
         title.setText(main.loadDay(button_id));
         leiras.setText(text);
         menu.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,7 @@ public class EditNapActivity extends AppCompatActivity {
 
     public void OpenActivity(String Activity) {
         if(Activity == "EdzesNapActivity"){
-            intent = new Intent(this, EdzesNapActivity.class);
+            intent = new Intent(this, SajatEdzesNapActivity.class);
             DatabaseHelper myDb=new DatabaseHelper(EditNapActivity.this);
             if(text.isEmpty()) {
                 if (myDb.insertData("edzes_nap",null,button_id,terv_nev, leiras.getText().toString()))

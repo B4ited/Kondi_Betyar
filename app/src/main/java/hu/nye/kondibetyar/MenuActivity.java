@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 
-import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
+import hu.nye.kondibetyar.edzes.EdzesActivty;
+import hu.nye.kondibetyar.edzes.SajatEdzesTervekActivity;
 import hu.nye.kondibetyar.etrend.EtrendActivity;
 import hu.nye.kondibetyar.gyakorlatok.GyakorlatokActivity;
 import hu.nye.kondibetyar.kapcsolat.KapcsolatActivity;
@@ -18,6 +18,7 @@ public class MenuActivity extends AppCompatActivity {
     private ImageButton gyakorlat;
     private ImageButton etkezes;
     private ImageButton kapcsolat;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,7 +33,7 @@ public class MenuActivity extends AppCompatActivity {
         edzes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenActivity("EdzesTervekActivity");
+                OpenActivity("EdzesActivity");
             }
         });
         gyakorlat.setOnClickListener(new View.OnClickListener() {
@@ -55,22 +56,10 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
     public void OpenActivity(String Activity){
-        if(Activity=="EdzesTervekActivity"){
-        Intent intent=new Intent(this, EdzesTervekActivity.class);
+        if(Activity=="EdzesActivity") intent=new Intent(this, EdzesActivty.class);
+        if(Activity=="Gyakorlatok")intent=new Intent(this, GyakorlatokActivity.class);
+        if(Activity=="Etrend") intent=new Intent(this, EtrendActivity.class);
+        if(Activity=="Kapcsolat") intent=new Intent(this, KapcsolatActivity.class);
         startActivity(intent);
-        }
-        else if(Activity=="Gyakorlatok"){
-            Intent intent=new Intent(this, GyakorlatokActivity.class);
-            startActivity(intent);
-        }
-        else if(Activity=="Etrend"){
-            Intent intent=new Intent(this, EtrendActivity.class);
-            startActivity(intent);
-        }
-        else if(Activity=="Kapcsolat"){
-            Intent intent=new Intent(this, KapcsolatActivity.class);
-            startActivity(intent);
-        }
-        else System.out.println("Hibás Átvitel!");
     }
 }
