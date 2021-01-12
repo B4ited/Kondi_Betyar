@@ -3,9 +3,13 @@ package hu.nye.kondibetyar.gyakorlatok;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +23,23 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
     private TextView title;
     private TextView test;
 
+    protected void kategoriaGeneralas(String kategoria, String[] kategoriak, int kezdet, int veg){
+        LinearLayout linearLayout = new LinearLayout(this);
+        setContentView(linearLayout);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        for(int i = kezdet; i <= veg; i++){
+            TextView tv = new TextView(this);
+            tv.setText(kategoriak[i]);
+            linearLayout.addView(tv);
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +51,6 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
         title.setText(kategoria);
 
         test=this.findViewById(R.id.gyakorlatok_test);
-        RandomAccessFile raf;
         
         int n = 0;
         String sor = null;
@@ -61,20 +81,31 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
         int kezdetIndex = 0, vegIndex = 0;
 
         switch (kategoria){
-            case "Mellizom Gyakorlatok":
+            case "mell":
+                title.setText("Mellizom gyakorlatok");
                 for (int i = 0; i < n;i++){
                     if(kategoriak[i].equals("mell"))
-                        kezdetIndex = i;
+                        kezdetIndex = i+1;
                     if(kategoriak[i].equals("mellVeg"))
-                        vegIndex = i;
+                        vegIndex = i-1;
                 }
                 break;
-            case "Hátizom Gyakorlatok":
+            case "hát":
+                title.setText("Hátizom gyakorlatok");
                 for (int i = 0; i < n;i++){
                     if(kategoriak[i].equals("hat"))
-                        kezdetIndex = i;
+                        kezdetIndex = i+1;
                     if(kategoriak[i].equals("hatVeg"))
-                        vegIndex = i;
+                        vegIndex = i-1;
+                }
+                break;
+            case "váll":
+                title.setText("Vállizom gyakorlatok");
+                for (int i = 0; i < n;i++){
+                    if(kategoriak[i].equals("vall"))
+                        kezdetIndex = i+1;
+                    if(kategoriak[i].equals("vallVeg"))
+                        vegIndex = i-1;
                 }
                 break;
         }

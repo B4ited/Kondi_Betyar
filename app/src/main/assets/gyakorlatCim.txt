@@ -2,7 +2,6 @@ mell
 Fekvenyomás egyenes padon
 Fekvenyomás egykezes súlyzókkal
 Fekveknyomás szűk fogással
-Tárogatás egyenes padon
 Tolódzkodás
 mellVeg
 hat
@@ -12,3 +11,9 @@ Evezés gépen ülve
 Nyakhoz húzás hátgépen
 Húzódzkodás szűk fogással
 hatVeg
+vall
+Vállból nyomás egykezes súlyzóval
+Oldalemelés állva
+Mellről nyomás ülve
+Mellről nyomás állva
+vallVeg

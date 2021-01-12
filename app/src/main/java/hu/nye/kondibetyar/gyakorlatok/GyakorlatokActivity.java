@@ -24,7 +24,7 @@ public class GyakorlatokActivity extends AppCompatActivity {
         mell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("kategoria","Mellizom Gyakorlatok");
+                intent.putExtra("kategoria","mell");
                 startActivity(intent);
             }
         });
