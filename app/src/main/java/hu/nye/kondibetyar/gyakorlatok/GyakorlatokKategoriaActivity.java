@@ -73,7 +73,7 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
         }
 
         //bug fix
-       gyakorlatLeiras =  gyakorlatLeiras.replace("null","a");
+       gyakorlatLeiras =  gyakorlatLeiras.replace("null","");
 
         //kiírás
         test.setText(gyakorlatLeiras);
