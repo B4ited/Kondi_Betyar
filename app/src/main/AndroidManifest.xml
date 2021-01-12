@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hu.nye.kondibetyar">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,19 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="@string/app_name" android:name="MenuActivity"/>
-        <activity android:label="@string/app_name" android:name=".edzes.EdzesTervekActivity"/>
-        <activity android:label="@string/app_name" android:name=".edzes.EdzesActivity"/>
-        <activity android:label="@string/app_name" android:name=".edzes.EdzesNapActivity"/>
 
-        <activity android:label="@string/app_name" android:name=".edzes.edit.EditEdzesActivity"/>
+        //Menu
+        <activity android:label="@string/app_name" android:name="MenuActivity"/>
+
+        //edzes
+        <activity android:label="@string/app_name" android:name=".edzes.EdzesActivty"/>
+        <activity android:label="@string/app_name" android:name=".edzes.EdzesWebviewerActivty"/>
+        <activity android:label="@string/app_name" android:name=".edzes.SajatEdzesActivity"/>
+        <activity android:label="@string/app_name" android:name=".edzes.SajatEdzesTervekActivity"/>
+        <activity android:label="@string/app_name" android:name=".edzes.SajatEdzesNapActivity"/>
         <activity android:label="@string/app_name" android:name=".edzes.edit.EditNapActivity"/>
         <activity android:label="@string/app_name" android:name=".edzes.edit.EditTervekActivity"/>
 
+        //gyakorlatok
         <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokActivity"/>
         <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokKategoriaActivity"/>
-        <activity android:label="@string/app_name" android:name=".etrend.EtrendActivity"/>
 
+        //etrend
+        <activity android:label="@string/app_name" android:name=".etrend.EtrendActivity"/>
+        <activity android:label="@string/app_name" android:name=".etrend.EtrendWebViewerActivity"/>
+
+        //kapcsolat
         <activity android:label="@string/app_name" android:name=".kapcsolat.KapcsolatActivity"/>
 
 

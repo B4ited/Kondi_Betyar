@@ -25,30 +25,48 @@
         <TextView
             android:id="@+id/t_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:text="Edzés Tervek"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
         <EditText
             android:id="@+id/et_nev"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:layout_height="61dp"
+            android:background="#514F4F"
             android:ems="10"
             android:hint="Terv neve:"
             android:inputType="textPersonName"
-            android:textColor="#151515" />
+            android:selectAllOnFocus="false"
+            android:singleLine="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#151515"
+            android:textColorHint="#2E2C2C" />
 
         <Button
-            android:id="@+id/b_send"
+            android:id="@+id/b_tavolsag2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+        <ImageButton
+            android:id="@+id/b_send"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
             android:background="#04081E"
-            android:text="Hozzáadás"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_add"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/b_tavolsag3"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/ib_edit"
@@ -57,7 +75,7 @@
             android:backgroundTint="#04081E"
             android:scaleType="fitCenter"
             android:tint="#31050505"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
 
     </LinearLayout>

@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -16,11 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
-import hu.nye.kondibetyar.edzes.EdzesTervekActivity;
+import hu.nye.kondibetyar.edzes.SajatEdzesTervekActivity;
 import hu.nye.kondibetyar.database.DatabaseHelper;
 
 public class EditTervekActivity  extends AppCompatActivity {
-    private Button add;
+    private ImageButton add;
     private EditText text;
     private Intent intent;
     private ImageButton menu;
@@ -36,12 +35,12 @@ public class EditTervekActivity  extends AppCompatActivity {
         add = this.findViewById(R.id.b_send);
         text = this.findViewById(R.id.et_nev);
         edit=this.findViewById(R.id.ib_edit);
-
+        getSupportActionBar().setTitle("Edzés");
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OpenActivity("MenuActivity","mind1");
+                OpenActivity("MenuActivity");
             }
         });
         edit.setOnClickListener(new View.OnClickListener() {
@@ -57,10 +56,15 @@ public class EditTervekActivity  extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHelper myDb=new DatabaseHelper(EditTervekActivity.this);
-                if(myDb.insertData("edzes_terv",text.getText().toString(),null,null,null,null,null,null,null,null))
-                    System.out.println("Sikerült!");
-                else System.out.println("Nem sikerült!");
-                OpenActivity("EdzesTervekActivity",text.getText().toString());
+
+                if(text.getText().toString().matches("")) toastMsg("Üres mező!");
+                else {
+                    if (myDb.insertData("edzes_terv", text.getText().toString(),null, null, null))
+
+                        System.out.println("Sikerült!");
+                    else System.out.println("Nem sikerült!");
+                    OpenActivity("EdzesTervekActivity");
+                }
             }
         });
 
@@ -104,10 +108,12 @@ public class EditTervekActivity  extends AppCompatActivity {
 
     }
 
-    private void OpenActivity(String Activity,String nev) {
-        if (Activity == "EdzesTervekActivity" && !nev.isEmpty()) {
-            intent = new Intent(this, EdzesTervekActivity.class);
-            startActivity(intent);
+    private void OpenActivity(String Activity) {
+
+
+        if (Activity == "EdzesTervekActivity") {
+                intent = new Intent(this, SajatEdzesTervekActivity.class);
+                startActivity(intent);
         }
         if(Activity=="MenuActivity"){
             intent=new Intent(this, MenuActivity.class);
