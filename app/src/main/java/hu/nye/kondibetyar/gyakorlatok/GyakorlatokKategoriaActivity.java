@@ -90,7 +90,7 @@ public class GyakorlatokKategoriaActivity extends AppCompatActivity {
         String kategoria = intent.getStringExtra("kategoria");
         title.setText(kategoria);
 
-        test=this.findViewById(R.id.gyakorlatok_test);
+       // test=this.findViewById(R.id.gyakorlatok_test);
 
         int n = 0;
         String sor = null;

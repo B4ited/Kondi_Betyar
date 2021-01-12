@@ -32,6 +32,7 @@
         //gyakorlatok
         <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokActivity"/>
         <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokKategoriaActivity"/>
+        <activity android:label="@string/app_name" android:name=".gyakorlatok.GyakorlatokWebViewerActivity"/>
 
         //etrend
         <activity android:label="@string/app_name" android:name=".etrend.EtrendActivity"/>
