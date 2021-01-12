@@ -1,0 +1,16 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">KondiBetyar</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision ed5a08c5ca485392d4d8f0e34934e006b46957e5)
++++ app/src/main/res/values/strings.xml	(date 1609870953824)
+@@ -1,3 +1,4 @@
+ <resources>
+-    <string name="app_name">KondiBetyar</string>
++    <string name="app_name">Kondi Betyár</string>
++    <!--<string name="app_name">KondiBetyar</string> -->
+ </resources>
+\ No newline at end of file

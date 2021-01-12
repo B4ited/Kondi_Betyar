@@ -1,0 +1,513 @@
+Index: app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesActivity.java
+===================================================================
+--- app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,94 +0,0 @@
+-package hu.nye.kondibetyar.edzes;
+-import android.content.Intent;
+-import android.database.Cursor;
+-import android.os.Bundle;
+-import android.view.View;
+-import android.widget.Button;
+-import android.widget.ImageButton;
+-import android.widget.LinearLayout;
+-import android.widget.TextView;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import hu.nye.kondibetyar.MenuActivity;
+-import hu.nye.kondibetyar.R;
+-import hu.nye.kondibetyar.database.DatabaseHelper;
+-
+-public class SajatEdzesActivity extends AppCompatActivity {
+-    public static final String TERV_ID="hu.nye.kondibetyar.edzes.TERV_ID";
+-    public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
+-    public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
+-    private LinearLayout ll;
+-    private ImageButton menu;
+-    public Intent intent;
+-    private String terv_nev;
+-    public String title_id;
+-    private TextView title;
+-    private DatabaseHelper myDb;
+-    private Cursor res;
+-    private int Button_id;
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_edzes);
+-        ll = this.findViewById(R.id.l_tema);
+-        menu = this.findViewById(R.id.ib_menu);
+-        title=this.findViewById(R.id.t_title);
+-        intent=getIntent();
+-        title_id = String.valueOf(intent.getIntExtra(SajatEdzesTervekActivity.BUTTON_ID, 1));
+-        terv_nev=loadTitle(title_id);
+-        getSupportActionBar().setTitle(terv_nev);
+-        title.setText("Heti terv");
+-        getSupportActionBar().setTitle("Edzés");
+-        menu.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                OpenActivity("MenuActivity");
+-            }
+-        });
+-        loadButtonData();
+-        }
+-
+-
+-    public String loadTitle(String id){
+-        myDb=new DatabaseHelper(SajatEdzesActivity.this);
+-        res=myDb.getTitleId("edzes_terv",id);
+-        res.moveToNext();
+-        return res.getString(0);
+-    }
+-
+-
+-    public void loadButtonData(){
+-        String[] nev={null,"Hetfo","Kedd","Szerda","Csütörtök","Péntek","Szombat","Vasárnap"};
+-        for (int i=1; i<=7; i++) CreateButton(i,nev[i]);
+-    }
+-
+-    private void CreateButton(int id,String text){
+-        Button btn = new Button(this);
+-        btn.setText(text);
+-        btn.setId(id);
+-        btn.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                Button_id=v.getId();
+-                OpenActivity("EdzesNapActivity");
+-            }
+-        });
+-        ll.addView(btn);
+-    }
+-
+-    private void OpenActivity(String Activity) {
+-        if (Activity == "EdzesNapActivity") {
+-            intent = new Intent(this, SajatEdzesNapActivity.class);
+-            intent.putExtra(TERV_ID,title_id);
+-            intent.putExtra(TERV_NEV,terv_nev);
+-            intent.putExtra(BUTTON_ID,Button_id);
+-            startActivity(intent);
+-        }
+-        if(Activity=="MenuActivity"){
+-            intent=new Intent(this, MenuActivity.class);
+-            startActivity(intent);
+-        }
+-    }
+-}
+Index: app/src/main/java/hu/nye/kondibetyar/edzes/EdzesWebviewerActivty.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/hu/nye/kondibetyar/edzes/EdzesWebviewerActivty.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/java/hu/nye/kondibetyar/edzes/EdzesWebviewerActivty.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,31 +0,0 @@
+-package hu.nye.kondibetyar.edzes;
+-
+-import android.os.Bundle;
+-import android.webkit.WebSettings;
+-import android.webkit.WebView;
+-import android.webkit.WebViewClient;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import hu.nye.kondibetyar.R;
+-
+-public class EdzesWebviewerActivty extends AppCompatActivity {
+-    private WebView webView;
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_edzes_webviewer);
+-        webView=findViewById(R.id.webview);
+-        webView.setWebViewClient(new WebViewClient());
+-        webView.loadUrl("https://shopbuilder.hu/edzestervek-a2257");
+-        WebSettings webSettings=webView.getSettings();
+-        webSettings.setJavaScriptEnabled(true);
+-
+-        getSupportActionBar().setTitle("Edzés");
+-    }
+-    @Override
+-    public void onBackPressed(){
+-        if(webView.canGoBack()) webView.goBack();
+-        else super.onBackPressed();
+-    }
+-}
+Index: app/src/main/res/layout/activity_edzes_webviewer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_edzes_webviewer.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/res/layout/activity_edzes_webviewer.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <WebView
+-        android:id="@+id/webview"
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent" />
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesNapActivity.java
+===================================================================
+--- app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesNapActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/java/hu/nye/kondibetyar/edzes/SajatEdzesNapActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,135 +0,0 @@
+-package hu.nye.kondibetyar.edzes;
+-
+-import android.content.Intent;
+-import android.database.Cursor;
+-import android.os.Bundle;
+-import android.view.View;
+-import android.widget.ImageButton;
+-import android.widget.LinearLayout;
+-import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import hu.nye.kondibetyar.MenuActivity;
+-import hu.nye.kondibetyar.R;
+-import hu.nye.kondibetyar.database.DatabaseHelper;
+-import hu.nye.kondibetyar.edzes.edit.EditNapActivity;
+-
+-public class SajatEdzesNapActivity extends AppCompatActivity {
+-    public static final String BUTTON_ID="hu.nye.kondibetyar.edzes.BUTTON_ID";
+-    public static final String LEIRAS="hu.nye.kondibetyar.edzes.LEIRAS";
+-    public static final String TERV_NEV="hu.nye.kondibetyar.edzes.TERV_NEV";
+-    private ImageButton edit;
+-    private LinearLayout ll;
+-    private Intent intent;
+-    private TextView title;
+-    private TextView leiras;
+-    private DatabaseHelper myDb;
+-    private Cursor res;
+-    private ImageButton menu;
+-    public String button_id;
+-    public String terv_nev;
+-    public boolean add;
+-
+-
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_edzesnap);
+-        ll=this.findViewById(R.id.l_tema);
+-        menu = this.findViewById(R.id.ib_menu);
+-        title=this.findViewById(R.id.t_title);
+-        leiras=this.findViewById(R.id.leiras);
+-        edit=this.findViewById(R.id.ib_edit);
+-        getSupportActionBar().setTitle("Edzés");
+-        intent=getIntent();
+-        add=intent.getBooleanExtra(EditNapActivity.BOOLEAN,false);
+-        if(!add)
+-        {
+-            button_id = String.valueOf(intent.getIntExtra(SajatEdzesActivity.BUTTON_ID, 1));
+-            terv_nev=intent.getStringExtra(SajatEdzesActivity.TERV_NEV);
+-
+-        }
+-        else {
+-            button_id = intent.getStringExtra(EditNapActivity.BUTTON_ID);
+-            terv_nev=intent.getStringExtra(EditNapActivity.TERV_NEV);
+-        }
+-        getSupportActionBar().setTitle(terv_nev);
+-        title.setText(loadDay(button_id));
+-        leiras.setText(loadText(button_id,terv_nev));
+-        menu.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                OpenActivity("MenuActivity");
+-            }
+-        });
+-        edit.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                OpenActivity("EditNapActivity");
+-            }
+-        });
+-    }
+-
+-
+-    public  String loadDay(String id){
+-        String day="";
+-        switch (id){
+-            case "1":
+-                day="Hétfő";
+-                break;
+-            case "2":
+-                day="Kedd";
+-                break;
+-            case "3":
+-                day="Szerda";
+-                break;
+-            case "4":
+-                day="Csütörtök";
+-                break;
+-            case "5":
+-                day="Péntek";
+-                break;
+-            case "6":
+-                day="Szombat";
+-                break;
+-            case "7":
+-                day="Vasárnap";
+-                break;
+-        }
+-        return day;
+-    }
+-
+-    public String loadText(String id,String terv_nev){
+-        myDb=new DatabaseHelper(SajatEdzesNapActivity.this);
+-        res=myDb.getTextId(id,terv_nev);
+-        res.moveToNext();
+-        if(res.getCount()==0){
+-            toastMsg("Nincs még terved!");
+-            return null;
+-        }
+-        else return res.getString(0);
+-    }
+-
+-    public void OpenActivity(String Activity) {
+-        if(Activity == "EditNapActivity"){
+-            intent = new Intent(this, EditNapActivity.class);
+-            intent.putExtra(BUTTON_ID,button_id);
+-            intent.putExtra(LEIRAS,leiras.getText().toString());
+-            intent.putExtra(TERV_NEV,terv_nev);
+-            startActivity(intent);
+-        }
+-        if(Activity=="MenuActivity"){
+-            intent=new Intent(this, MenuActivity.class);
+-            startActivity(intent);
+-        }
+-    }
+-
+-    public void toastMsg(String msg) {
+-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+-        toast.show();
+-    }
+-
+-}
+Index: app/src/main/res/layout/activity_edzes_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_edzes_main.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/res/layout/activity_edzes_main.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,73 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <LinearLayout
+-        android:id="@+id/l_tema"
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:background="#04081E"
+-        android:orientation="vertical"
+-        tools:layout_editor_absoluteX="16dp"
+-        tools:layout_editor_absoluteY="16dp">
+-
+-        <ImageButton
+-            android:id="@+id/ib_menu"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:contentDescription="@string/app_name"
+-            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+-            tools:text="menu" />
+-
+-
+-        <TextView
+-            android:id="@+id/t_title"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:text="Edzés Tervek"
+-            android:textAlignment="center"
+-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+-            android:textColor="#FFFFFF"
+-            android:textSize="30sp" />
+-
+-        <Button
+-            android:id="@+id/b_tavolsag"
+-            android:layout_width="match_parent"
+-            android:layout_height="27dp"
+-            android:visibility="invisible" />
+-
+-        <TextView
+-            android:id="@+id/textView"
+-            android:layout_width="match_parent"
+-            android:layout_height="102dp"
+-            android:text="Edzések shopbuilder.hu ajánlásával"
+-            android:textAlignment="center"
+-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+-            android:textColor="#FFFFFF" />
+-
+-        <ImageButton
+-            android:id="@+id/ib_check"
+-            android:layout_width="match_parent"
+-            android:layout_height="61dp"
+-            android:background="#04081E"
+-            android:scaleType="fitCenter"
+-            app:srcCompat="@android:drawable/ic_search_category_default" />
+-
+-        <Button
+-            android:id="@+id/b_tavolsag2"
+-            android:layout_width="match_parent"
+-            android:layout_height="27dp"
+-            android:visibility="invisible" />
+-
+-        <Button
+-            android:id="@+id/b_sajat_edzes"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:text="Saját Edzés" />
+-
+-
+-    </LinearLayout>
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/hu/nye/kondibetyar/edzes/EdzesActivty.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/hu/nye/kondibetyar/edzes/EdzesActivty.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/java/hu/nye/kondibetyar/edzes/EdzesActivty.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,58 +0,0 @@
+-package hu.nye.kondibetyar.edzes;
+-
+-import android.content.Intent;
+-import android.os.Bundle;
+-import android.view.Menu;
+-import android.view.View;
+-import android.widget.Button;
+-import android.widget.ImageButton;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import hu.nye.kondibetyar.R;
+-import hu.nye.kondibetyar.etrend.EtrendWebViewerActivity;
+-
+-public class EdzesActivty extends AppCompatActivity {
+-    private Intent intent;
+-    private ImageButton menu;
+-    private ImageButton check;
+-    private Button edzes;
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_edzes_main);
+-        menu=findViewById(R.id.ib_menu);
+-        check=findViewById(R.id.ib_check);
+-        edzes=findViewById(R.id.b_sajat_edzes);
+-
+-        menu.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) {
+-                OpenActivity("Menu");
+-            }
+-        });
+-        check.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) { OpenActivity("EdzesWebViewerActivity"); }
+-        });
+-        edzes.setOnClickListener(new View.OnClickListener() {
+-            @Override
+-            public void onClick(View v) { OpenActivity("SajatEdzesTervekActivity");
+-            }
+-        });
+-
+-        getSupportActionBar().setTitle("Edzés");
+-    }
+-
+-
+-    public void OpenActivity(String Activity) {
+-        if (Activity == "Menu") intent = new Intent(this, Menu.class);
+-        if (Activity == "EdzesWebViewerActivity") intent = new Intent(this,EdzesWebviewerActivty.class);
+-        if (Activity == "SajatEdzesTervekActivity") intent = new Intent(this, SajatEdzesTervekActivity.class);
+-        startActivity(intent);
+-
+-    }
+-
+-
+-}
+Index: app/src/main/java/hu/nye/kondibetyar/etrend/EtrendWebViewerActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/hu/nye/kondibetyar/etrend/EtrendWebViewerActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/java/hu/nye/kondibetyar/etrend/EtrendWebViewerActivity.java	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,32 +0,0 @@
+-package hu.nye.kondibetyar.etrend;
+-
+-import android.os.Bundle;
+-import android.webkit.WebSettings;
+-import android.webkit.WebView;
+-import android.webkit.WebViewClient;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-
+-import hu.nye.kondibetyar.R;
+-
+-public class EtrendWebViewerActivity extends AppCompatActivity {
+-    private WebView webView;
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_etrend_webviewer);
+-        webView=findViewById(R.id.webview);
+-        webView.setWebViewClient(new WebViewClient());
+-        webView.loadUrl("https://shopbuilder.hu/etrendek-a3281");
+-        WebSettings webSettings=webView.getSettings();
+-        webSettings.setJavaScriptEnabled(true);
+-
+-        getSupportActionBar().setTitle("Étrend");
+-    }
+-
+-    @Override
+-    public void onBackPressed(){
+-        if(webView.canGoBack()) webView.goBack();
+-        else super.onBackPressed();
+-    }
+-}
+Index: app/src/main/res/layout/activity_etrend_webviewer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_etrend_webviewer.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
++++ app/src/main/res/layout/activity_etrend_webviewer.xml	(revision e5575a11ff5ac2f84fe033366e2f639672269105)
+@@ -1,19 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        android:orientation="vertical">
+-
+-        <WebView
+-
+-            android:id="@+id/webview"
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent" />
+-
+-    </LinearLayout>
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
