@@ -2,33 +2,49 @@ package hu.nye.kondibetyar.gyakorlatok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
+import hu.nye.kondibetyar.etrend.EtrendWebViewerActivity;
 
 public class GyakorlatokActivity extends AppCompatActivity {
 
     private TextView title;
-    private Button mell;
+    private ImageButton menu;
+    private ImageButton check;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gyakorlatok);
-        mell = this.findViewById(R.id.gyakorlatokKategoriaMell);
-        intent = new Intent(this, GyakorlatokKategoriaActivity.class);
-        mell.setOnClickListener(new View.OnClickListener() {
+        getSupportActionBar().setTitle("Gyakorlatok");
+        menu=findViewById(R.id.ib_menu);
+        check=findViewById(R.id.ib_check);
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("kategoria","mell");
-                startActivity(intent);
+               OpenActivity("Menu");
             }
         });
-        title=this.findViewById(R.id.gyakorlatok_fotitle);
-        title.setText("Válassz izomcsoportot!");
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OpenActivity("WebViewerActivity");
+            }
+        });
+    }
+
+    public void OpenActivity(String Activity) {
+        if (Activity == "Menu") intent = new Intent(this, Menu.class);
+        if (Activity == "WebViewerActivity") intent = new Intent(this, GyakorlatokWebViewerActivity.class);
+        startActivity(intent);
+
     }
 }
