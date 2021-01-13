@@ -6,8 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -78,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(TABLE=="edzes_terv") {
             result = db.delete(TABLE_EDZES_TERV, COL_EDZES_TERV_ID+"=?", new String[]{id});
         }
-        if(TABLE== "layouts") {
+        if(TABLE=="gyakorlatok") {
             result = db.delete(TABLE_GYAKORLATOK, COL_GYAKORLATOK_ID+"=?", new String[]{id});
         }
         if(result==-1) return false;
@@ -113,7 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             result= db.insert(TABLE_EDZES_NAP,null,contentValues);
         }
         //gyakorlatok
-        if(TABLE== "layouts") {
+        if(TABLE=="gyakorlatok") {
             contentValues.put(COL_GYAKORLATOK_NEV, terv_nev);
             result= db.insert(TABLE_GYAKORLATOK,null,contentValues);
         }
@@ -130,7 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(Table=="edzes_nap") res = db.rawQuery("SELECT "+COL_EDZES_NAP_ID+", "+ COL_EDZES_NAP_TERV_NEV + " FROM " + TABLE_EDZES_NAP +" WHERE "+COL_EDZES_NAP_HET_ID+"="+Button_id, null);
         //étrend
         //gyakorlatok
-        if(Table== "layouts") res = db.rawQuery("SELECT "+COL_GYAKORLATOK_ID +", "+ COL_GYAKORLATOK_NEV + " FROM " + TABLE_GYAKORLATOK , null);
+        if(Table=="gyakorlatok") res = db.rawQuery("SELECT "+COL_GYAKORLATOK_ID +", "+ COL_GYAKORLATOK_NEV + " FROM " + TABLE_GYAKORLATOK , null);
         return res;
     }
 
@@ -139,7 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res=null;
         if(Table=="edzes_terv") res=db.rawQuery("SELECT "+COL_EDZES_TERV_NEV+" FROM "+TABLE_EDZES_TERV+" WHERE id="+id,null);
         if(Table=="edzes_nap") res=db.rawQuery("SELECT "+COL_EDZES_NAP_TERV_NEV+" FROM "+TABLE_EDZES_NAP+" WHERE id="+id,null);
-        if(Table== "layouts") res=db.rawQuery("SELECT "+COL_GYAKORLATOK_NEV+" FROM "+TABLE_GYAKORLATOK+" WHERE id="+id,null);
+        if(Table=="gyakorlatok") res=db.rawQuery("SELECT "+COL_GYAKORLATOK_NEV+" FROM "+TABLE_GYAKORLATOK+" WHERE id="+id,null);
         return res;
     }
 
