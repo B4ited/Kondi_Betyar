@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 
 
@@ -90,7 +91,7 @@ public class EtrendActivity extends AppCompatActivity {
 
 
     public void OpenActivity(String Activity) {
-        if (Activity == "Menu") intent = new Intent(this, Menu.class);
+        if (Activity == "Menu") intent = new Intent(this, MenuActivity.class);
         if (Activity == "WebViewerActivity") intent = new Intent(this, EtrendWebViewerActivity.class);
         startActivity(intent);
 

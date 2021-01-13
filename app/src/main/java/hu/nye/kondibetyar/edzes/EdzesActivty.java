@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.etrend.EtrendWebViewerActivity;
 
@@ -47,7 +48,7 @@ public class EdzesActivty extends AppCompatActivity {
 
 
     public void OpenActivity(String Activity) {
-        if (Activity == "Menu") intent = new Intent(this, Menu.class);
+        if (Activity == "Menu") intent = new Intent(this, MenuActivity.class);
         if (Activity == "EdzesWebViewerActivity") intent = new Intent(this,EdzesWebviewerActivty.class);
         if (Activity == "SajatEdzesTervekActivity") intent = new Intent(this, SajatEdzesTervekActivity.class);
         startActivity(intent);
