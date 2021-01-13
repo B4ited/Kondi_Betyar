@@ -22,7 +22,14 @@ android {
     sourceSets {
         main {
             res {
-                srcDirs 'src/main/res', 'src/main/res/layouts/edzes', 'src/main/res/edzes'
+                srcDirs 'src/main/res',
+                        'src/main/res/layouts',
+                        'src/main/res/layouts/main',
+                        'src/main/res/layouts/edzes',
+                        'src/main/res/layouts/etrend',
+                        'src/main/res/layouts/gyakorlatok',
+                        'src/main/res/layouts/kapcsolat',
+                        'src/main/res/edzes'
             }
             assets {
                 srcDirs 'src\\main\\assets'

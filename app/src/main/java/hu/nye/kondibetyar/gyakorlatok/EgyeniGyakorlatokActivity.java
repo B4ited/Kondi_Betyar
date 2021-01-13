@@ -29,7 +29,7 @@ public class EgyeniGyakorlatokActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_egyenigyakolatok);
+        setContentView(R.layout.activity_egyenigyakorlatok);
         menu = this.findViewById(R.id.ib_menu);
         edit=this.findViewById(R.id.ib_add);
 
@@ -51,7 +51,7 @@ public class EgyeniGyakorlatokActivity extends AppCompatActivity {
 
     public void loadButtonData(){
         myDb=new DatabaseHelper(EgyeniGyakorlatokActivity.this);
-        res=myDb.getMenuData("gyakorlatok",null);
+        res=myDb.getMenuData("layouts",null);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még egyéni gyakorlatod!",Toast.LENGTH_LONG).show();
         int id;
         String nev;

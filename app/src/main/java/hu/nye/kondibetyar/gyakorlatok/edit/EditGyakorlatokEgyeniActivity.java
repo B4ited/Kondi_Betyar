@@ -17,8 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.database.DatabaseHelper;
-import hu.nye.kondibetyar.edzes.SajatEdzesTervekActivity;
-import hu.nye.kondibetyar.edzes.edit.EditTervekActivity;
 import hu.nye.kondibetyar.gyakorlatok.EgyeniGyakorlatokActivity;
 
 
@@ -60,7 +58,7 @@ public class EditGyakorlatokEgyeniActivity extends AppCompatActivity {
 
                 if(text.getText().toString().matches("")) toastMsg("Üres mező!");
                 else {
-                    if (myDb.insertData("gyakorlatok", text.getText().toString(),null, null, null))
+                    if (myDb.insertData("layouts", text.getText().toString(),null, null, null))
 
                         System.out.println("Sikerült!");
                     else System.out.println("Nem sikerült!");
@@ -73,7 +71,7 @@ public class EditGyakorlatokEgyeniActivity extends AppCompatActivity {
 
     public void loadButtonData(){
         DatabaseHelper myDb=new DatabaseHelper(EditGyakorlatokEgyeniActivity.this);
-        res=myDb.getMenuData("gyakorlatok",null);
+        res=myDb.getMenuData("layouts",null);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még edzés gyakorlatod!",Toast.LENGTH_LONG).show();
         int id;
         String nev;
@@ -97,7 +95,7 @@ public class EditGyakorlatokEgyeniActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int id=v.getId();
                 DatabaseHelper myDb=new DatabaseHelper(EditGyakorlatokEgyeniActivity.this);
-                if(myDb.deleteData("gyakorlatok",String.valueOf(id)));
+                if(myDb.deleteData("layouts",String.valueOf(id)));
                 toastMsg("Sikeres törlés!");
                 startActivity(getIntent());
 
