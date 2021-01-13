@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/tv_menu"
-            android:layout_width="388dp"
+            android:layout_width="380dp"
             android:layout_height="47dp"
             android:layout_margin="20dp"
             android:background="#272525"
@@ -36,14 +36,15 @@
 
         <GridLayout
             android:id="@+id/tema_gl"
-            android:layout_width="wrap_content"
+            android:layout_width="366dp"
             android:layout_height="377dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
-            android:rowCount="4">
+            android:rowCount="4"
+            android:textAlignment="center">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_sajat_edzes"

@@ -3,4 +3,81 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/l_tema"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#04081E"
+        android:orientation="vertical"
+        >
+
+        <ImageButton
+            android:id="@+id/ib_menu"
+
+            android:layout_width="66dp"
+            android:layout_height="46dp"
+            android:contentDescription="@string/app_name"
+            android:src="@android:drawable/ic_menu_sort_by_size" />
+
+
+        <TextView
+            android:id="@+id/t_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Készítették:"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fodor Balázs"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t_title3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Harangi Tamás"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t_title4"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Mocsári Richárd"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/t_title5"
+            android:layout_width="match_parent"
+            android:layout_height="89dp"
+            android:text="Felhasznált forrás: www.shopbuilder.hu"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
