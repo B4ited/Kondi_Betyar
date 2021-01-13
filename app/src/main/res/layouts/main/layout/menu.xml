@@ -27,12 +27,12 @@
             android:background="#272525"
             android:backgroundTint="#272525"
             android:fontFamily="sans-serif"
-            android:text="Menu"
+            android:text="Menü"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#E8E3E3"
             android:textSize="36sp"
-            tools:text="Menu" />
+            tools:text="Menü" />
 
         <GridLayout
             android:id="@+id/tema_gl"
