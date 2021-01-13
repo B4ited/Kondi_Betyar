@@ -19,6 +19,7 @@ public class GyakorlatokActivity extends AppCompatActivity {
     private TextView title;
     private ImageButton menu;
     private ImageButton check;
+    private Button egyeni;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class GyakorlatokActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Gyakorlatok");
         menu=findViewById(R.id.ib_menu);
         check=findViewById(R.id.ib_check);
+        egyeni=findViewById(R.id.egyeni_gyakorlatBTN);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,7 @@ public class GyakorlatokActivity extends AppCompatActivity {
         if (Activity == "Menu") intent = new Intent(this, Menu.class);
         if (Activity == "WebViewerActivity") intent = new Intent(this, GyakorlatokWebViewerActivity.class);
         startActivity(intent);
+        if(Activity == "GyakorlatokEgyeni") intent = new Intent(this,GyakorlatokEgyeniActivity.class);
 
     }
 }

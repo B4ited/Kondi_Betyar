@@ -1,0 +1,70 @@
+Index: app/src/main/res/layout/activity_gyakorlatok.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:orientation=\"vertical\"\r\n        tools:layout_editor_absoluteX=\"167dp\"\r\n        tools:layout_editor_absoluteY=\"246dp\">\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/gyakorlatok_menuBTN\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:contentDescription=\"@string/app_name\"\r\n            app:srcCompat=\"@android:drawable/ic_menu_sort_by_size\"\r\n            tools:text=\"menu\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/gyakorlatok_fotitle\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:textAlignment=\"center\"\r\n            android:textAppearance=\"@style/TextAppearance.AppCompat.Large\"\r\n            android:textSize=\"30sp\" />\r\n    </LinearLayout>\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_gyakorlatok.xml	(revision e3e9b689dde310176f954b86a3fdf145c3d86519)
++++ app/src/main/res/layout/activity_gyakorlatok.xml	(date 1609870911113)
+@@ -27,5 +27,59 @@
+             android:textAlignment="center"
+             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+             android:textSize="30sp" />
++
++        <Button
++            android:id="@+id/gyakorlat_temaMell"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/gyakorlat_temaHat"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/gyakorlat_temaVall"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/gyakorlat_temaComb"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/button5"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/button6"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/button7"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/button8"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
++
++        <Button
++            android:id="@+id/button9"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:text="Button" />
+     </LinearLayout>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
