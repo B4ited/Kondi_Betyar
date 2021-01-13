@@ -54,10 +54,14 @@
             <Button
                 android:id="@+id/b_tavolsag2"
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="67dp"
                 android:visibility="invisible" />
 
-
+            <Button
+                android:id="@+id/egyeni_gyakorlatBTN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Egyéni gyakorlatok" />
 
 
         </LinearLayout>
