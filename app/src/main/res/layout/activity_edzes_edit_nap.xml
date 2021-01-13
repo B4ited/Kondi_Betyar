@@ -40,13 +40,20 @@
             android:id="@+id/et_textarea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:hint="Leírás"
-            android:textColor="#FFFFFF" />
+            android:hint="Leiras"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#817E7E"
+            android:textSize="30sp" />
 
 
         <Button
             android:id="@+id/b_tavolsag2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/b_tavolsag3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible" />
@@ -58,11 +65,41 @@
             android:text="Pihenőnap" />
 
         <Button
-            android:id="@+id/b_tavolsag3"
+            android:id="@+id/b_tavolsag4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/t_title2"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:text="Egyéni Gyakorlatok:"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="#FFFFFF"
+            android:contextClickable="false"
+            android:text="Saját Gyakorlato"
+            android:textAlignment="center" />
+
+        <ImageButton
+            android:id="@+id/ib_hozzaad"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:background="#04081E"
+            android:scaleType="fitCenter"
+            android:src="@android:drawable/ic_menu_add"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="#FFFFFF" />
         <Button
             android:id="@+id/b_send"
             android:layout_width="match_parent"

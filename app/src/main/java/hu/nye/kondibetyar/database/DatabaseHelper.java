@@ -4,8 +4,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -25,6 +29,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_EDZES_NAP_LEIRAS="leiras";
 
     //gyakorlatok
+    public static final String TABLE_GYAKORLATOK="gyakorlatok";
+    public static final String COL_GYAKORLATOK_ID="id";
+    public static final String COL_GYAKORLATOK_NEV="nev";
+
 
 
     //étrend
@@ -49,15 +57,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //étrend
         //gyakorlatok
+        String query3 = "CREATE TABLE " + TABLE_GYAKORLATOK +
+                " (" + COL_GYAKORLATOK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_GYAKORLATOK_NEV + " TEXT);";
 
         db.execSQL(query);
         db.execSQL(query2);
+        db.execSQL(query3);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_EDZES_TERV);
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_EDZES_NAP);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_GYAKORLATOK);
         onCreate(db);
     }
 
@@ -66,6 +79,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         if(TABLE=="edzes_terv") {
             result = db.delete(TABLE_EDZES_TERV, COL_EDZES_TERV_ID+"=?", new String[]{id});
+        }
+        if(TABLE=="gyakorlatok") {
+            result = db.delete(TABLE_GYAKORLATOK, COL_GYAKORLATOK_ID+"=?", new String[]{id});
         }
         if(result==-1) return false;
         else return true;
@@ -98,8 +114,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             contentValues.put(COL_EDZES_NAP_LEIRAS, nap_leiras);
             result= db.insert(TABLE_EDZES_NAP,null,contentValues);
         }
-        //étrend
         //gyakorlatok
+        if(TABLE=="gyakorlatok") {
+            contentValues.put(COL_GYAKORLATOK_NEV, terv_nev);
+            result= db.insert(TABLE_GYAKORLATOK,null,contentValues);
+        }
+        //étrend
         if(result==-1) return false;
         else return true;
     }
@@ -112,6 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(Table=="edzes_nap") res = db.rawQuery("SELECT "+COL_EDZES_NAP_ID+", "+ COL_EDZES_NAP_TERV_NEV + " FROM " + TABLE_EDZES_NAP +" WHERE "+COL_EDZES_NAP_HET_ID+"="+Button_id, null);
         //étrend
         //gyakorlatok
+        if(Table=="gyakorlatok") res = db.rawQuery("SELECT "+COL_GYAKORLATOK_ID +", "+ COL_GYAKORLATOK_NEV + " FROM " + TABLE_GYAKORLATOK , null);
         return res;
     }
 
@@ -120,6 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res=null;
         if(Table=="edzes_terv") res=db.rawQuery("SELECT "+COL_EDZES_TERV_NEV+" FROM "+TABLE_EDZES_TERV+" WHERE id="+id,null);
         if(Table=="edzes_nap") res=db.rawQuery("SELECT "+COL_EDZES_NAP_TERV_NEV+" FROM "+TABLE_EDZES_NAP+" WHERE id="+id,null);
+        if(Table=="gyakorlatok") res=db.rawQuery("SELECT "+COL_GYAKORLATOK_NEV+" FROM "+TABLE_GYAKORLATOK+" WHERE id="+id,null);
         return res;
     }
 
@@ -129,5 +151,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         res=db.rawQuery("SELECT "+COL_EDZES_NAP_LEIRAS+" FROM "+TABLE_EDZES_NAP+" WHERE "+COL_EDZES_NAP_HET_ID+"="+button_id+ " AND "+ COL_EDZES_NAP_TERV_NEV+"="+"'"+terv_nev+"'",null);
         return res;
     }
+    public ArrayList<String> getAllProvinces(){
+
+        ArrayList<String> list=new ArrayList<String>();
+        // Open the database for reading
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Start the transaction.
+        db.beginTransaction();
+
+
+        try
+        {
+
+            String selectQuery = "SELECT * FROM "+ TABLE_GYAKORLATOK;
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    list.add(cursor.getString(1));//adding 2nd column data
+                } while (cursor.moveToNext());
+            }
+            db.setTransactionSuccessful();
+
+        }
+        catch (SQLiteException e)
+        {
+            e.printStackTrace();
+
+        }
+        finally
+        {
+            db.endTransaction();
+            // End the transaction.
+            db.close();
+
+            // Close database
+        }
+        return list;
+
+
+    }
+
 
 }

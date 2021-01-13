@@ -47,23 +47,6 @@
             android:textColorHint="#2E2C2C" />
 
         <Button
-            android:id="@+id/b_tavolsag4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="invisible" />
-
-        <EditText
-            android:id="@+id/EgyeniGyakorlatText"
-            android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:background="#514F4F"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Gyakorlat leírás"
-            android:inputType="textMultiLine"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <Button
             android:id="@+id/b_tavolsag2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

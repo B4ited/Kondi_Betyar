@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class SajatEdzesNapActivity extends AppCompatActivity {
     private DatabaseHelper myDb;
     private Cursor res;
     private ImageButton menu;
+    private Spinner spinner;
     public String button_id;
     public String terv_nev;
     public boolean add;

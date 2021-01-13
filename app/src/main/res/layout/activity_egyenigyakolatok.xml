@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#04081E">
+
+        <LinearLayout
+            android:id="@+id/l_tema"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#04081E"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/ib_menu"
+                android:layout_width="76dp"
+                android:layout_height="62dp"
+                android:contentDescription="@string/app_name"
+                android:src="@android:drawable/ic_menu_sort_by_size" />
+
+
+            <TextView
+                android:id="@+id/t_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Egyéni Gyakorlatok"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:id="@+id/ib_add"
+                android:layout_width="match_parent"
+                android:layout_height="106dp"
+                android:background="#04081E"
+                android:backgroundTint="#04081E"
+                android:rotationX="11"
+                android:scaleType="fitCenter"
+                android:src="@android:drawable/ic_menu_add"
+                android:textAlignment="center"
+                android:tint="#6785B1" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
