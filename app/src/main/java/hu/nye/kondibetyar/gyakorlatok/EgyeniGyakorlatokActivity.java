@@ -51,7 +51,7 @@ public class EgyeniGyakorlatokActivity extends AppCompatActivity {
 
     public void loadButtonData(){
         myDb=new DatabaseHelper(EgyeniGyakorlatokActivity.this);
-        res=myDb.getMenuData("layouts",null);
+        res=myDb.getMenuData("gyakorlatok",null);
         if(res.getCount()==0) Toast.makeText(this,"Nincs még egyéni gyakorlatod!",Toast.LENGTH_LONG).show();
         int id;
         String nev;
