@@ -1,0 +1,29 @@
+Index: app/src/main/res/layout/main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/l_tema\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#04081E\"\r\n        android:orientation=\"vertical\"\r\n        tools:layout_editor_absoluteX=\"16dp\"\r\n        tools:layout_editor_absoluteY=\"0dp\">\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/ib_menu\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:contentDescription=\"@string/app_name\"\r\n            app:srcCompat=\"@android:drawable/ic_menu_sort_by_size\"\r\n            tools:text=\"menu\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView2\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"253dp\"\r\n            app:srcCompat=\"@drawable/kondibetyar\" />\r\n\r\n    </LinearLayout>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/main.xml	(revision 113d93156e627911343fb3efd5f40e556ec916e7)
++++ app/src/main/res/layout/main.xml	(date 1610543069829)
+@@ -15,18 +15,10 @@
+         tools:layout_editor_absoluteX="16dp"
+         tools:layout_editor_absoluteY="0dp">
+ 
+-        <ImageButton
+-            android:id="@+id/ib_menu"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:contentDescription="@string/app_name"
+-            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+-            tools:text="menu" />
+-
+         <ImageView
+             android:id="@+id/imageView2"
+             android:layout_width="match_parent"
+-            android:layout_height="253dp"
++            android:layout_height="560dp"
+             app:srcCompat="@drawable/kondibetyar" />
+ 
+     </LinearLayout>
