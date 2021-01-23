@@ -1,0 +1,22 @@
+Index: app/src/main/res/layout/activity_gyakorlatok.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"match_parent\"\n        android:orientation=\"vertical\"\n        tools:layout_editor_absoluteX=\"167dp\"\n        tools:layout_editor_absoluteY=\"246dp\">\n\n        <ImageButton\n            android:id=\"@+id/gyakorlatok_menuBTN\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:contentDescription=\"@string/app_name\"\n            app:srcCompat=\"@android:drawable/ic_menu_sort_by_size\"\n            tools:text=\"menu\" />\n\n        <TextView\n            android:id=\"@+id/gyakorlatok_fotitle\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:textAlignment=\"center\"\n            android:textAppearance=\"@style/TextAppearance.AppCompat.Large\"\n            android:textSize=\"30sp\" />\n        <Button\n            android:id=\"@+id/gyakorlatokKategoriaMell\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Mellizom gyakorlatok\" />\n\n    </LinearLayout>\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_gyakorlatok.xml	(revision 1260791ac7b09bb523f3e7e0820c911df1b45d99)
++++ app/src/main/res/layout/activity_gyakorlatok.xml	(date 1610467447000)
+@@ -27,11 +27,5 @@
+             android:textAlignment="center"
+             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+             android:textSize="30sp" />
+-        <Button
+-            android:id="@+id/gyakorlatokKategoriaMell"
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:text="Mellizom gyakorlatok" />
+-
+     </LinearLayout>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
