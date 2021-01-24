@@ -29,7 +29,7 @@ public class EgyeniGyakorlatokActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_egyenigyakorlatok);
+        setContentView(R.layout.activity_egyenigyakolatok);
         menu = this.findViewById(R.id.ib_menu);
         edit=this.findViewById(R.id.ib_add);
 

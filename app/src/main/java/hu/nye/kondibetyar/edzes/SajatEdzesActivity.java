@@ -60,7 +60,7 @@ public class SajatEdzesActivity extends AppCompatActivity {
 
 
     public void loadButtonData(){
-        String[] nev={null,"Hétfő","Kedd","Szerda","Csütörtök","Péntek","Szombat","Vasárnap"};
+        String[] nev={null,"Hetfo","Kedd","Szerda","Csütörtök","Péntek","Szombat","Vasárnap"};
         for (int i=1; i<=7; i++) CreateButton(i,nev[i]);
     }
 
