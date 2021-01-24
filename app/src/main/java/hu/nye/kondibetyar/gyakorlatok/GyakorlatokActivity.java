@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import hu.nye.kondibetyar.MenuActivity;
 import hu.nye.kondibetyar.R;
 import hu.nye.kondibetyar.gyakorlatok.edit.EditGyakorlatokEgyeniActivity;
 
@@ -50,7 +49,7 @@ public class GyakorlatokActivity extends AppCompatActivity {
     }
 
     public void OpenActivity(String Activity) {
-        if (Activity == "Menu") intent = new Intent(this, MenuActivity.class);
+        if (Activity == "Menu") intent = new Intent(this, Menu.class);
         if (Activity == "WebViewerActivity") intent = new Intent(this, GyakorlatokWebViewerActivity.class);
         if(Activity == "GyakorlatokEgyeni") intent = new Intent(this, EgyeniGyakorlatokActivity.class);
         startActivity(intent);
